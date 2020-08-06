@@ -12,7 +12,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'Info @ PoolCrasher <no-reply@poolcrasher.com>'
+  config.mailer_sender = 'Info @ BounceGroup <no-reply@bouncegroup.com>'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -277,7 +277,7 @@ Devise.setup do |config|
 
   # config.omniauth :facebook, '', '', scope: 'email', info_fields: 'email, name'
   # config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET'], scope: 'email', info_fields: 'email, name'
-  config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET'], callback_url: 'https://poolcrasher.herokuapp.com/auth/facebook/callback'
+  config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET'], callback_url: 'https://bouncygroup.herokuapp.com/auth/facebook/callback'
                 # client_options: {
                 #     site: 'https://graph.facebook.com/v2.11',
                 #     authorize_url: "https://www.facebook.com/v2.11/dialog/oauth"

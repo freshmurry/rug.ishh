@@ -14,7 +14,7 @@ module ApplicationHelper
   # "https://connect.stripe.com/express/oauth/authorize?redirect_uri=http://localhost:3000/auth/stripe_connect/callback&client_id=ca_Bz12s2Z5ijkGknATCnWx9EmDZIvGMf0e&state=read_write"
 
   # ---- LIVE ----
-  "https://connect.stripe.com/express/oauth/authorize?redirect_uri=https://bouncehouse.com/auth/stripe_connect/callback&client_id=ca_HmZd2YZ3PVyTCB7UBoBfh0fq4lyNNJtp&state={STATE_VALUE}"
+  "https://connect.stripe.com/express/oauth/authorize?redirect_uri=https://bouncyhouse.herokuapp.com/auth/stripe_connect/callback&client_id=ca_HmZd2YZ3PVyTCB7UBoBfh0fq4lyNNJtp&state={STATE_VALUE}"
   # "https://connect.stripe.com/express/oauth/authorize?redirect_uri=https://bouncehouse.com/auth/stripe_connect/callback&client_id=ca_Bz129rceytBvxCIxgLptuWQeV6JayofE&state=read_write"
 
   end
