@@ -40,22 +40,24 @@
     <div class="container">
       <div class="row text-center">
         <div class="col-xs-3 col-sm-3 col-md-3">
-          <i class="fas fa-swimming-bouncehouse fa-2x"></i>
+          <i class="fas fa-home fa-2x"></i>
         </div>
         <div class="col-xs-3 col-sm-3 col-md-3">
-          <i class="fa fa-users fa-2x"></i>
+          <i class="fa fa-clock fa-2x"></i>
         </div>
-        <div class="col-xs-3 col-sm-3 col-md-3">
-          <i class="fas fa-toilet fa-2x"></i>
-        </div>
-        <div class="col-xs-3 col-sm-3 col-md-3">
-          <i class="fas fa-life-ring fa-2x"></i>
-        </div>
+        <!--<div class="col-xs-3 col-sm-3 col-md-3">-->
+        <!--  <i class="fas fa-toilet fa-2x"></i>-->
+        <!--</div>-->
+        <!--<div class="col-xs-3 col-sm-3 col-md-3">-->
+        <!--  <i class="fas fa-life-ring fa-2x"></i>-->
+        <!--</div>-->
       </div>
     
       <div class="row text-center">
         <div class="col-xs-3 col-sm-3 col-md-3"><%= @bouncehouse.bouncehouse_type %></div>
         <div class="col-xs-3 col-sm-3 col-md-3"><%= @bouncehouse.time_limit %></div>
+        <!--<div class="col-xs-3 col-sm-3 col-md-3"><= @bouncehouse. %></div>-->
+        <!--<div class="col-xs-3 col-sm-3 col-md-3"><= @bouncehouse. %></div>-->
       </div>
     </div>  
     <hr/>
@@ -64,7 +66,7 @@
     <div class="container">
       <div class="row">
         <div class="panel panel-default">
-          <div class="panel-heading">About This bouncehouse</div>
+          <div class="panel-heading">Description</div>
           <div class="panel-body">
             <div class="container">
               <p><%= @bouncehouse.description %></p>
@@ -195,9 +197,9 @@
     </div>  
     <hr/>
 
-    <!-- NEAR BY bouncehouseS -->
+    <!-- NEARBY BOUNCE HOUSES -->
     <div class="panel panel-default">
-      <div class="panel-heading">Nearby bouncehouses</div>
+      <div class="panel-heading">Nearby Bounce Houses</div>
         <% for bouncehouse in @bouncehouse.nearbys(10) %>
       <div class="col-md-4">
         <div class="panel panel-default">

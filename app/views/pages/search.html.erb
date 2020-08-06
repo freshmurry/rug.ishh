@@ -45,14 +45,14 @@
           <div class="row">
             <div class="col-md-4">
               <div class="form-group select">
-                <label>Timr Limit</label>
+                <label>Time Limit</label>
                   <%= f.select :time_limit_gteq, [["2hrs.", "2hrs."], ["4hrs.", "4hrs."], ["6hrs.", "6hrs."], ["8hrs.", "8hrs."]],
                    id: "accommodate", prompt: "Select...", class: "form-control" %>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group select">
-                  <label>bouncehouse Type</label>
+                  <label>Bounce House Type</label>
                   <%= f.select :bouncehouse_type_gteq, [["Regluar", "Regular"], ["Castle", "Castle"], ["Waterslide","Waterslide"]], id: "bouncehouse_type", prompt: "Select...", class: "form-control" %>
                 </div>
               </div>
@@ -108,7 +108,7 @@
         <br/>
   
         <div class="row" id="bouncehouse_listing">
-          <%= render partial: "bouncehouses/bouncehouses_list", locals: {bouncehouses: @arrbouncehouses} %>
+          <%= render partial: "bouncehouses/bouncehouses_list", locals: {bouncehouses: @arrBouncehouses} %>
         </div>
       </div>
     </div>
@@ -151,7 +151,7 @@
       }
 
       google.maps.event.addDomListener(window, 'load', function() {
-        initialize(<%= raw @arrbouncehouses.to_json %>)
+        initialize(<%= raw @arrBouncehouses.to_json %>)
       });
     </script>
   </div>

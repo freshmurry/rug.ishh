@@ -7,7 +7,7 @@
           <div class="container text-center">
             <% if @reservations.blank? %>
               <h3>You don't have any bookings</h3><br/>
-              <%= link_to "List a  Pool  to Earn", new_pool_path, class: "btn btn-normal" %>
+              <%= link_to "List a  Bounce House to Earn", new_bouncehouse_path, class: "btn btn-normal" %>
             <% else %>
               <%= column_chart @this_week_revenue, colors: ["#16A085"] %>
             <% end %>

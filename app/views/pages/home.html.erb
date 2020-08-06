@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-md-12 banner text-center">
-    <h1><span class="text-blue">Book and rent pool time in your neighborhood</span> simple and easy.</h1>
+    <h1><span class="text-blue">Book and rent a bounce house</span> simple and easy.</h1>
   </div>
 
-  <div class="col-md-12"><h4>Search for a pool in your neighborhood</h4></div>
+  <div class="col-md-12"><h4>Search for a bounce house in your neighborhood</h4></div>
 </div>
 
 
@@ -11,7 +11,7 @@
     <div class="col-md-6">
       <%= form_tag search_path, method: :get do %>
 
-      <%= text_field_tag :search, params[:search], placeholder: "Search Pools", class: "form-control", id: "autolocation" %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Bounce Houses", class: "form-control", id: "autolocation" %>
     </div>&nbsp;
 
     <div class="col-md-2">
@@ -23,25 +23,25 @@
 
 <br>
 
-<!-- POOLS -->
-<div class="text-center"><h2>Pools Near You</h2>
-  <p>Book and rent pool time within your own neighborhood</p>
+<!-- BOUNCE HOUSES -->
+<div class="text-center"><h2>Bounce Houses Near You</h2>
+  <p>Book and rent a bounce house</p>
 </div>
 <br/>
 
 <div class="row">
-  <%= render partial: "pools/pools_list", locals: {pools: @pools} %>
+  <%= render partial: "bouncehouses/bouncehouses_list", locals: {bouncehouses: @bouncehouses} %>
 </div>
 
-<!--<h2 class="col-md-12 banner"><span class="text-blue">Why use</span> PoolCrasher</h2>-->
+<!--<h2 class="col-md-12 banner"><span class="text-blue">Why use</span> bouncehouseCrasher</h2>-->
 
 <!-- CITIES -->
-<div class="text-center"><h2>PoolCrasher in other Cities Coming Soon!</h2></div>
+<div class="text-center"><h2>BounceGroup in other Cities Coming Soon!</h2></div>
 <br/>
 
 <div class="row">
   <div class="col-md-3 col-sm-3">
-		<a href="https://poolcrasher.herokuapp.com/search?utf8=✓&search=chicago">
+		<a href="https://bouncegroup.herokuapp.com/search?utf8=✓&search=chicago">
 			<div class="discovery-card" style="background-image: url('/assets/chicago.jpg')">
 				<div class="va-container">
 					<div class="va-middle text-center">
@@ -53,7 +53,7 @@
 	</div>
   
 	<div class="col-md-3 col-sm-3">
-		<a href="https://poolcrasher.herokuapp.com/search?utf8=✓&search=atlanta">
+		<a href="https://bouncegroup.herokuapp.com/search?utf8=✓&search=atlanta">
 			<div class="discovery-card" style="background-image: url('/assets/atlanta.jpg')">
 				<div class="va-container">
 					<div class="va-middle text-center">
@@ -65,7 +65,7 @@
 	</div>
   
 	<div class="col-md-3 col-sm-3">
-		<a href="https://poolcrasher.herokuapp.com/search?utf8=✓&search=losangeles">
+		<a href="https://bouncegroup.herokuapp.com/search?utf8=✓&search=losangeles">
 			<div class="discovery-card" style="background-image: url('/assets/la.jpg')">
 				<div class="va-container">
 					<div class="va-middle text-center">
@@ -77,7 +77,7 @@
 	</div>
 	
 	<div class="col-md-3 col-sm-3">
-		<a href="https://poolcrasher.herokuapp.com/search?utf8=✓&search=houston">
+		<a href="https://bouncegroup.herokuapp.com/search?utf8=✓&search=houston">
 			<div class="discovery-card" style="background-image: url('/assets/houston.jpg')">
 				<div class="va-container">
 					<div class="va-middle text-center">
