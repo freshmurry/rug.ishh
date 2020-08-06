@@ -4,20 +4,20 @@ class Reservation < ApplicationRecord
   after_create_commit :create_notification
   
   belongs_to :user
-  belongs_to :pool
+  belongs_to :bouncehouse
   
   scope :current_week_revenue, -> (user) {
-    joins(:pool)
-    .where("pools.user_id = ? AND reservations.updated_at >= ? AND reservations.status = ?", user.id, 1.week.ago, 1)
+    joins(:bouncehouse)
+    .where("bouncehouses.user_id = ? AND reservations.updated_at >= ? AND reservations.status = ?", user.id, 1.week.ago, 1)
     .order(updated_at: :asc)
   }
 
   private
 
     def create_notification
-      type = self.pool.Instant? ? "New Booking" : "New Request"
+      type = self.bouncehouse.Instant? ? "New Booking" : "New Request"
       guest = User.find(self.user_id)
 
-      Notification.create(content: "#{type} from #{guest.fullname}", user_id: self.pool.user_id)
+      Notification.create(content: "#{type} from #{guest.fullname}", user_id: self.bouncehouse.user_id)
     end
 end

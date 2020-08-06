@@ -1,11 +1,11 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <span><% if @pool.Instant? %><i class="fa fa-bolt" style="color: #ffb400"></i> <% end %> $<%= @pool.price %></span>
+    <span><% if @bouncehouse.Instant? %><i class="fa fa-bolt" style="color: #ffb400"></i> <% end %> $<%= @bouncehouse.price %></span>
     <span class="pull-right">Per Day</span>
   </div>
   <div class="panel-body">
     <div class="container">  
-      <%= form_for([@pool, @pool.reservations.new]) do |f| %>
+      <%= form_for([@bouncehouse, @bouncehouse.reservations.new]) do |f| %>
         <div class="row">
           <div class="container">
             
@@ -29,7 +29,7 @@
             <tbody>
               <tr>
                 <td>Price</td>
-                <td class="text-right">$<%= @pool.price %></td>
+                <td class="text-right">$<%= @bouncehouse.price %></td>
               </tr>
               <!--<tr>-->
               <!--  <td>Booking Fee</td>-->
@@ -56,7 +56,7 @@
   
         <br/>
         
-        <% if @pool.Instant? %>
+        <% if @bouncehouse.Instant? %>
           <%= f.submit "Book Now", id: "btn_book", class: "btn btn-normal btn-block", disabled: true %>        
         <% else %>
           <%= f.submit "Request Now", id: "btn_book", class: "btn btn-normal btn-block", disabled: true %>
@@ -92,7 +92,7 @@
       }
 
       $.ajax({
-        url: '<%= preview_pool_path(@pool) %>',
+        url: '<%= preview_bouncehouse_path(@bouncehouse) %>',
         data: input,
         success: function (data) {
 
@@ -122,7 +122,7 @@
                 return selectedDates.indexOf(d) !== -1;
             });
             
-            var total = (days - selectedSpecialDate.length) * <%= @pool.price %>;
+            var total = (days - selectedSpecialDate.length) * <%= @bouncehouse.price %>;
             if (selectedSpecialDate.length > 0) {
               $('#special_details').show();
 
@@ -144,7 +144,7 @@
     }
 
     $.ajax({
-      url: '<%= preload_pool_path(@pool) %>',
+      url: '<%= preload_bouncehouse_path(@bouncehouse) %>',
       dateType: 'json',
       success: function(data) {
 

@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-3">
-    <%= render 'pool_menu' %>
+    <%= render 'bouncehouse_menu' %>
   </div>
   <div class="col-md-9">
     <div class="panel panel-default">
@@ -11,7 +11,7 @@
 
       <div class="panel-body">
         <div class="container">
-          <%= form_for @pool do |f| %>
+          <%= form_for @bouncehouse do |f| %>
 
             <div class="row">
               <div class="form-group">
@@ -23,7 +23,7 @@
             <div class="row">
               <div class="form-group">
                 <label>Description</label>
-                <%= f.text_area :description, rows: 5, placeholder: "Provide a greate description of your pool", class: "form-control", required: true %>
+                <%= f.text_area :description, rows: 5, placeholder: "Provide a greate description of your service", class: "form-control", required: true %>
               </div>
             </div>
 

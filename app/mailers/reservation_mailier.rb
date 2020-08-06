@@ -1,7 +1,7 @@
 class ReservationMailer < ApplicationMailer
-  def send_email_to_guest(guest, pool)
+  def send_email_to_guest(guest, bouncehouse)
     @recipient = guest
-    @pool = pool
-    mail(to: @recipient.email, subject: "Thank you! Enjoy your pool time!💯")
+    @bouncehouse = bouncehouse
+    mail(to: @recipient.email, subject: "Thank you! Enjoy your bounce house!💯")
   end
 end

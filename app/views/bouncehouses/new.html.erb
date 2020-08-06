@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Create Your Listing
+      </div>
+      <div class="panel-body">
+        <div class="container">
+
+          <%= form_for @bouncehouse do |f| %>
+            <div class="col-md-4 select">
+              <div class="form-group">
+                <label>bouncehouse Type</label>
+                <%= f.select :bouncehouse_type, [["Regular", "Regular"], ["Waterslide", "Waterslide"], ["Castle", "Castle"]],
+                  id: "bouncehouse_type", prompt: "Select...", class: "form-control" %>
+              </div>
+            </div>
+                     
+            <div class="col-md-4 select">
+              <div class="form-group">
+                <label>Time Limit</label>
+                <%= f.select :time_limit, [["4hrs.", "4hrs."], ["6hrs.", "6hrs."], ["8hrs.", "8hrs."]], id: "time_limit", prompt: "Select...", class: "form-control" %>
+              </div>
+            </div>
+              
+            <div class="col-md-4 select">
+              <div class="form-group">
+                <label>Booking Type</label>
+                <%= f.select :instant, bouncehouse.instants.map {|key,value| [key.humanize, key]}, selected: 'Instant', prompt: "Select...", class: "form-control" %>
+              </div>
+            </div>
+        
+            <div class="col-md-12 text-center">
+              <div><%= f.submit "Save", class: "btn btn-normal" %> 
+            </div>
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
+
+<div class="col-md-3">
+  <div class="panel-default">
+    <div class="container">
+      <a href="https://track.fiverr.com/visit/?bta=7074&nci=5479&campaign=19735" Target="_Top"><img border="0" src="https://fiverr.ck-cdn.com/tn/serve/?cid=1492998"></a>
+      <br><br/>
+    </div>
+  </div> 
+</div>

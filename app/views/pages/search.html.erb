@@ -45,63 +45,57 @@
           <div class="row">
             <div class="col-md-4">
               <div class="form-group select">
-                <label>Accommodate</label>
-                  <%= f.select :accommodate_gteq, [["1", 1], ["2", 2], ["3", 3], ["4", 4]],
+                <label>Timr Limit</label>
+                  <%= f.select :time_limit_gteq, [["2hrs.", "2hrs."], ["4hrs.", "4hrs."], ["6hrs.", "6hrs."], ["8hrs.", "8hrs."]],
                    id: "accommodate", prompt: "Select...", class: "form-control" %>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group select">
-                  <label>Pool Type</label>
-                  <%= f.select :pool_type_gteq, [["Above Ground", "Above Ground"], ["In-Ground", "In-Ground"]], id: "pool_type", prompt: "Select...", class: "form-control" %>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group select">
-                  <label>Restrooms</label>
-                  <%= f.select :restrooms_gteq, [["1", "1"], ["2", "2"], ["None", "None"]], id: "restrooms", prompt: "Select...", class: "form-control" %>
+                  <label>bouncehouse Type</label>
+                  <%= f.select :bouncehouse_type_gteq, [["Regluar", "Regular"], ["Castle", "Castle"], ["Waterslide","Waterslide"]], id: "bouncehouse_type", prompt: "Select...", class: "form-control" %>
                 </div>
               </div>
             </div>
             <hr/>
   
-            <div class="row">
-              <div class="panel panel-default">
-                <div class="panel-heading">Amenities</div>
-                  <div class="panel-body">
-                    <div class="container">
-                      <div class="col-md-4">
-                        <%= check_box_tag "q[is_towels_eq_any]", "true" %> Towels
-                      </div>
+            <!--<div class="row">-->
+            <!--  <div class="panel panel-default">-->
+            <!--    <div class="panel-heading">Amenities</div>-->
+            <!--      <div class="panel-body">-->
+            <!--        <div class="container">-->
+            <!--          <div class="col-md-4">-->
+            <!--            <= check_box_tag "q[is_towels_eq_any]", "true" %> Towels-->
+            <!--          </div>-->
                       
-                      <div class="col-md-4">
-                        <%= check_box_tag "q[is_accessible_eq_any]", "true" %> Accessible
-                      </div>
+            <!--          <div class="col-md-4">-->
+            <!--            <= check_box_tag "q[is_accessible_eq_any]", "true" %> Accessible-->
+            <!--          </div>-->
             
           
-                      <div class="col-md-4">
-                        <%= check_box_tag "q[is_chairs_eq_any]", "true" %> Chairs
-                      </div>
+            <!--          <div class="col-md-4">-->
+            <!--            <= check_box_tag "q[is_chairs_eq_any]", "true" %> Chairs-->
+            <!--          </div>-->
                       
-                      <div class="col-md-4">
-                        <%= check_box_tag "q[is_speaker_eq_any]", "true" %> Portable Speaker
-                      </div>
+            <!--          <div class="col-md-4">-->
+            <!--            <= check_box_tag "q[is_speaker_eq_any]", "true" %> Portable Speaker-->
+            <!--          </div>-->
                       
-                      <div class="col-md-4">
-                        <%= check_box_tag "q[is_parking_eq_any]", "true" %> Non-Permit Street Parking
-                      </div>
+            <!--          <div class="col-md-4">-->
+            <!--            <= check_box_tag "q[is_parking_eq_any]", "true" %> Non-Permit Street Parking-->
+            <!--          </div>-->
                       
-                      <div class="col-md-4">
-                        <%= check_box_tag "q[is_garage_parking_eq_any]", "true" %> Garage Parking
-                      </div>
+            <!--          <div class="col-md-4">-->
+            <!--            <= check_box_tag "q[is_garage_parking_eq_any]", "true" %> Garage Parking-->
+            <!--          </div>-->
                       
-                      <div class="col-md-4">
-                        <%= check_box_tag "q[is_heating_eq_any]", "true" %> Heated Pool
-                      </div>
-                    </div>  
-                  </div>
-                </div>
-              </div>
+            <!--          <div class="col-md-4">-->
+            <!--            <= check_box_tag "q[is_heating_eq_any]", "true" %> Heated bouncehouse-->
+            <!--          </div>-->
+            <!--        </div>  -->
+            <!--      </div>-->
+            <!--    </div>-->
+            <!--  </div>-->
   
             <hr/>
   
@@ -113,8 +107,8 @@
         
         <br/>
   
-        <div class="row" id="pool_listing">
-          <%= render partial: "pools/pools_list", locals: {pools: @arrPools} %>
+        <div class="row" id="bouncehouse_listing">
+          <%= render partial: "bouncehouses/bouncehouses_list", locals: {bouncehouses: @arrbouncehouses} %>
         </div>
       </div>
     </div>
@@ -128,11 +122,11 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwN_tpAAKnHhy14HzNqK-XeuarVJhNHg8"></script>
     
     <script>
-      function initialize(pools) {
+      function initialize(bouncehouses) {
         var location = {lat: 41.881832, lng: -87.623177}
         
-        if (pools.length > 0) {
-          location = {lat: pools[0].latitude, lng: pools[0].longitude}
+        if (bouncehouses.length > 0) {
+          location = {lat: bouncehouses[0].latitude, lng: bouncehouses[0].longitude}
         }
 
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -142,14 +136,14 @@
 
         var marker, inforwindow;
 
-        pools.forEach(function(pool) {
+        bouncehouses.forEach(function(bouncehouse) {
           marker = new google.maps.Marker({
-            position: {lat: pool.latitude, lng: pool.longitude},
+            position: {lat: bouncehouse.latitude, lng: bouncehouse.longitude},
             map: map
           });
 
           inforwindow = new google.maps.InfoWindow({
-            content: "<div class='map_price'>$" + pool.price + "</div>"
+            content: "<div class='map_price'>$" + bouncehouse.price + "</div>"
           });
 
           inforwindow.open(map, marker);
@@ -157,7 +151,7 @@
       }
 
       google.maps.event.addDomListener(window, 'load', function() {
-        initialize(<%= raw @arrPools.to_json %>)
+        initialize(<%= raw @arrbouncehouses.to_json %>)
       });
     </script>
   </div>

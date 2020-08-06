@@ -1,7 +1,7 @@
 <!-- Image -->
 <div class="row">
   <div class="col-md-12">
-    <%= image_tag @pool.cover_photo(nil), width: "100%" %>
+    <%= image_tag @bouncehouse.cover_photo(nil), width: "100%" %>
   </div>
 </div>
 <br/>
@@ -14,21 +14,21 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9">
-        <h2><%= @pool.listing_name %></h2>
-            <%= @pool.address %>
+        <h2><%= @bouncehouse.listing_name %></h2>
+            <%= @bouncehouse.address %>
         </div>&nbsp;
 
         <div class="col-md-3 text-center">
-          <%= image_tag avatar_url(@pool.user), class: "img-circle avatar-large" %><br/>
-          <%= link_to user_path(@pool.user) do %>
-          <%= @pool.user.fullname %>
+          <%= image_tag avatar_url(@bouncehouse.user), class: "img-circle avatar-large" %><br/>
+          <%= link_to user_path(@bouncehouse.user) do %>
+          <%= @bouncehouse.user.fullname %>
           <% end %>
           <div>
             <span id="average_rating"></span>
           </div>
           <div class="center">
             <% if current_user && current_user != @user %>
-              <%= link_to "Message Host", conversations_path(sender_id: current_user.id, recipient_id: @pool.user.id), method: :post, class: "btn btn-default" %>
+              <%= link_to "Message Host", conversations_path(sender_id: current_user.id, recipient_id: @bouncehouse.user.id), method: :post, class: "btn btn-default" %>
             <% end %>
           </div>
         </div>
@@ -36,11 +36,11 @@
     </div>  
     <hr/>
       
-    <!-- Pool Info -->
+    <!-- bouncehouse Info -->
     <div class="container">
       <div class="row text-center">
         <div class="col-xs-3 col-sm-3 col-md-3">
-          <i class="fas fa-swimming-pool fa-2x"></i>
+          <i class="fas fa-swimming-bouncehouse fa-2x"></i>
         </div>
         <div class="col-xs-3 col-sm-3 col-md-3">
           <i class="fa fa-users fa-2x"></i>
@@ -54,10 +54,8 @@
       </div>
     
       <div class="row text-center">
-        <div class="col-xs-3 col-sm-3 col-md-3"><%= @pool.pool_type %></div>
-        <div class="col-xs-3 col-sm-3 col-md-3"><%= @pool.accommodate %></div>
-        <div class="col-xs-3 col-sm-3 col-md-3"><%= @pool.restrooms %></div>
-        <div class="col-xs-3 col-sm-3 col-md-3"><%= @pool.lifesaver %></div>
+        <div class="col-xs-3 col-sm-3 col-md-3"><%= @bouncehouse.bouncehouse_type %></div>
+        <div class="col-xs-3 col-sm-3 col-md-3"><%= @bouncehouse.time_limit %></div>
       </div>
     </div>  
     <hr/>
@@ -66,10 +64,10 @@
     <div class="container">
       <div class="row">
         <div class="panel panel-default">
-          <div class="panel-heading">About This Pool</div>
+          <div class="panel-heading">About This bouncehouse</div>
           <div class="panel-body">
             <div class="container">
-              <p><%= @pool.description %></p>
+              <p><%= @bouncehouse.description %></p>
             </div>  
           </div>
         </div>
@@ -78,40 +76,40 @@
     <br/>
   
     <!-- AMENITIES --> 
-    <div class="container">
-      <div class="row">
-        <div class="panel panel-default">
-          <div class="panel-heading">Amenities</div>
-          <div class="panel-body">
-            <div class="container">
-              <div class="col-md-12">
-                <div class="row">
-                  <div class="col-xs-4 col-sm-4 col-md-4">
-                    <ul class="amenities">
-                      <li class="<%= 'text-line-through' if !@pool.is_towels %>">Towels</li>
-                      <li class="<%= 'text-line-through' if !@pool.is_chairs %>">Chairs</li>
-                      <li class="<%= 'text-line-through' if !@pool.is_accessible %>">Accessible</li>
-                    </ul>
-                  </div>
-                  <div class="col-xs-4 col-sm-4 col-md-4">
-                    <ul class="amenities">
-                      <li class="<%= 'text-line-through' if !@pool.is_speaker %>">Portable Speakers</li>
-                      <li class="<%= 'text-line-through' if !@pool.is_parking %>">Non-Permit Street Parking</li>
-                    </ul>
-                  </div>
-                  <div class="col-xs-4 col-sm-4 col-md-4">
-                    <ul class="amenities">
-                      <li class="<%= 'text-line-through' if !@pool.is_garage_parking %>">Garage Parking</li>
-                      <li class="<%= 'text-line-through' if !@pool.is_heated_pool %>">Heated Pool</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!--<div class="container">-->
+    <!--  <div class="row">-->
+    <!--    <div class="panel panel-default">-->
+    <!--      <div class="panel-heading">Amenities</div>-->
+    <!--      <div class="panel-body">-->
+    <!--        <div class="container">-->
+    <!--          <div class="col-md-12">-->
+    <!--            <div class="row">-->
+    <!--              <div class="col-xs-4 col-sm-4 col-md-4">-->
+    <!--                <ul class="amenities">-->
+    <!--                  <li class="<= 'text-line-through' if !@bouncehouse.is_towels %>">Towels</li>-->
+    <!--                  <li class="<= 'text-line-through' if !@bouncehouse.is_chairs %>">Chairs</li>-->
+    <!--                  <li class="<= 'text-line-through' if !@bouncehouse.is_accessible %>">Accessible</li>-->
+    <!--                </ul>-->
+    <!--              </div>-->
+    <!--              <div class="col-xs-4 col-sm-4 col-md-4">-->
+    <!--                <ul class="amenities">-->
+    <!--                  <li class="<= 'text-line-through' if !@bouncehouse.is_speaker %>">Portable Speakers</li>-->
+    <!--                  <li class="<= 'text-line-through' if !@bouncehouse.is_parking %>">Non-Permit Street Parking</li>-->
+    <!--                </ul>-->
+    <!--              </div>-->
+    <!--              <div class="col-xs-4 col-sm-4 col-md-4">-->
+    <!--                <ul class="amenities">-->
+    <!--                  <li class="<= 'text-line-through' if !@bouncehouse.is_garage_parking %>">Garage Parking</li>-->
+    <!--                  <li class="<= 'text-line-through' if !@bouncehouse.is_heated_bouncehouse %>">Heated bouncehouse</li>-->
+    <!--                </ul>-->
+    <!--              </div>-->
+    <!--            </div>-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--</div>-->
     <hr/>
   
     <!-- CAROUSEL -->
@@ -172,7 +170,7 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwN_tpAAKnHhy14HzNqK-XeuarVJhNHg8"></script>
         <script>
          function initialize() {
-            var location = {lat: <%= @pool.latitude %>, lng: <%= @pool.longitude %>};
+            var location = {lat: <%= @bouncehouse.latitude %>, lng: <%= @bouncehouse.longitude %>};
             var map = new google.maps.Map(document.getElementById('map'), {
               center: location,
               zoom: 12
@@ -184,7 +182,7 @@
             });
     
             var infoWindow = new google.maps.InfoWindow({
-              content: '<div id="content"><%= image_tag @pool.cover_photo(:medium) %></div>'
+              content: '<div id="content"><%= image_tag @bouncehouse.cover_photo(:medium) %></div>'
             });
     
             infoWindow.open(map, marker);
@@ -197,20 +195,20 @@
     </div>  
     <hr/>
 
-    <!-- NEAR BY POOLS -->
+    <!-- NEAR BY bouncehouseS -->
     <div class="panel panel-default">
-      <div class="panel-heading">Nearby Pools</div>
-        <% for pool in @pool.nearbys(10) %>
+      <div class="panel-heading">Nearby bouncehouses</div>
+        <% for bouncehouse in @bouncehouse.nearbys(10) %>
       <div class="col-md-4">
         <div class="panel panel-default">
           <div class="panel-heading preview">
-            <%= image_tag pool.cover_photo(:medium) %>
+            <%= image_tag bouncehouse.cover_photo(:medium) %>
           </div>
               
           <div class="panel-body">
             <div class="container">
-              <%= link_to pool.listing_name, pool %><br/>
-              (<%= pool.distance.round(2) %> miles away)
+              <%= link_to bouncehouse.listing_name, bouncehouse %><br/>
+              (<%= bouncehouse.distance.round(2) %> miles away)
             </div>
           </div>
         </div>  
@@ -230,6 +228,6 @@
   $('#average_rating').raty({
     path: '/assets',
     readOnly: true,
-    score: <%= @pool.average_rating %>
+    score: <%= @bouncehouse.average_rating %>
   });
 </script>

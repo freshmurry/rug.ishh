@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= render 'bouncehouse_menu' %>
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-default">
+
+      <div class="panel-heading">
+        Listing
+      </div>
+
+      <div class="panel-body">
+        <div class="container">
+          <%= form_for @bouncehouse do |f| %>
+
+            <div class="col-md-4 select">
+              <div class="form-group">
+                <label>Bouncehouse Type</label>
+                <%= f.select :bouncehouse_type, [["Regular", "Regular"], ["Waterslide", "Waterslide"]],
+                              id: "bouncehouse_type", prompt: "Select...", class: "form-control" %>
+             	</div>
+          	</div>
+
+            <div class="col-md-4 select">
+              <div class="form-group">
+                <label>Time Limit</label>
+                <%= f.select :time_limit, [["4hrs.", 4hrs.], ["6hrs.", 6hrs.], ["8hrs.", "8hrs."]],
+                              id: "timr_limit", prompt: "Select...", class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="col-md-4 select">
+              <div class="form-group">
+                <label>Booking Type</label>
+                <%= f.select :instant, bouncehouse.instants.map {|key,value| [key.humanize, key]}, selected: 'Instant', prompt: "Select...", class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="col-md-12"><%= f.submit "Save", class: "btn btn-normal" %></div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

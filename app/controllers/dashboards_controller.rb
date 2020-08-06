@@ -2,6 +2,6 @@ class DashboardsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @pools = current_user.pools
+    @bouncehouses = current_user.bouncehouses
   end
 end

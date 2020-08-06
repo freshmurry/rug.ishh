@@ -14,13 +14,12 @@ Rails.application.routes.draw do
      end
    end
 
-   resources :pools do		
+   resources :bouncehouses do		
     member do		
       get 'listing'
       get 'pricing'
       get 'description'
       get 'photo_upload'
-      get 'amenities'
       get 'location'
       get 'preload'
       get 'preview'

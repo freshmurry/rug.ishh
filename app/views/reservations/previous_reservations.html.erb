@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-3">
     <ul class="sidebar-list">
-      <li class="sidebar-item"><%= link_to "Current Listings", pools_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "Current Listings", bouncehouses_path, class: "sidebar-link" %></li>
       <li class="sidebar-item"><%= link_to "Current Reservations", current_reservations_path, class: "sidebar-link" %></li>
       <li class="sidebar-item"><%= link_to "Previous Reservations", previous_reservations_path, class: "sidebar-link active" %></li>
     </ul>
@@ -9,7 +9,7 @@
   <div class="col-md-9">
     <div class="panel panel-default">
       <div class="panel-heading">
-        Previously Booked Pools
+        Previously Booked Bounce Houses
       </div>
       <div class="panel-body">
       <div class="container">
@@ -22,17 +22,17 @@
               </div>
               <div class="col-md-2">
                 <div class="panel-heading-preview">
-                  <%= link_to pool_path(space.pool) do %>
-                    <%= image_tag space.pool.cover_photo(:thumb) %>
+                  <%= link_to bouncehouse_path(space.bouncehouse) do %>
+                    <%= image_tag space.bouncehouse.cover_photo(:thumb) %>
                   <% end %>
                 </div>  
               </div>
               <div class="col-md-5">
-                <%= link_to space.pool.listing_name, pool_path(space.pool) %><br/>
+                <%= link_to space.bouncehouse.listing_name, bouncehouse_path(space.bouncehouse) %><br/>
                 <span>
-                  <%= image_tag (space.pool.user.image), class: "img-circle avatar-small" %>
-                  <%= link_to user_path(space.pool.user) do %>
-                  <%= space.pool.user.fullname %>
+                  <%= image_tag (space.bouncehouse.user.image), class: "img-circle avatar-small" %>
+                  <%= link_to user_path(space.bouncehouse.user) do %>
+                  <%= space.bouncehouse.user.fullname %>
                   <% end %>
                 </span>
               </div>

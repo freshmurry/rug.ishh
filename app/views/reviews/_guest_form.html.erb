@@ -11,7 +11,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title text-left">Review Pool Host</h4>
+        <h4 class="modal-title text-left">Review Bounce House Host</h4>
       </div>
       <div class="modal-body">
         <%= form_for current_user.guest_reviews.new do |f| %>
@@ -22,9 +22,9 @@
               <%= f.text_area :comment, rows: 3, class: "form-control" %>
             </div>
 
-            <%= f.hidden_field :pool_id, value: reservation.pool.id %>
+            <%= f.hidden_field :bouncehouse_id, value: reservation.bouncehouse.id %>
             <%= f.hidden_field :reservation_id, value: reservation.id %>
-            <%= f.hidden_field :host_id, value: reservation.pool.user.id %>
+            <%= f.hidden_field :host_id, value: reservation.bouncehouse.user.id %>
 
             <div class="text-center">
               <%= f.submit "Add Review", class: "btn btn-normal" %>

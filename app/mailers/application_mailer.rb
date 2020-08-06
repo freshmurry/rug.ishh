@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'info@poolcrasher.com'
+  default from: 'info@bouncehouse.com'
   layout 'mailer'
 end

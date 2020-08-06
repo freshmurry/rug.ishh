@@ -1,17 +1,9 @@
 $('#photos').html("<%= j render 'photos_list' %>")
-<<<<<<< HEAD
-<% if @.photos.blank? %>
+<% if @bouncehouse.photos.blank? %>
   $('#photo_check').hide();
 <% end %>
 
-<% if !@.active && !@.price.blank? && !@.listing_name.blank? && !@.photos.blank? && !@.location_type.blank? %>
-=======
-<% if @pool.photos.blank? %>
-  $('#photo_check').hide();
-<% end %>
-
-<% if !@pool.active && !@pool.price.blank? && !@pool.listing_name.blank? && !@pool.photos.blank? && !@pool.location_type.blank? %>
->>>>>>> 3906278811c5dda65e4ada8b7ad8477deef7fa61
+<% if !@bouncehouse.active && !@bouncehouse.price.blank? && !@bouncehouse.listing_name.blank? && !@bouncehouse.photos.blank? && !@bouncehouse.location_type.blank? %>
     $('#publish_button').attr('disabled', false);
 <% else %>
     $('#publish_button').attr('disabled', true);

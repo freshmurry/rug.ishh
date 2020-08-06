@@ -49,7 +49,7 @@
     // ----- TEST -----
     // var stripe = Stripe('pk_test_WYMTzyGZ9KXIM7ckP4mIDQEa');
     // ----- LIVE -----
-    var stripe = Stripe('pk_live_tPxK7gw5a2XVBKxCgAdATbwf');
+    var stripe = Stripe('<%= Rails.configuration.stripe[:publishable_key] %>');
     var elements = stripe.elements();
 
     var card = elements.create('card', {

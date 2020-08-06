@@ -3,46 +3,46 @@ class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:approve, :decline]
 
   def create
-    pool = Pool.find(params[:pool_id])
+    bouncehouse = Bouncehouse.find(params[:bouncehouse_id])
 
-    if current_user == pool.user
-      flash[:alert] = "You cannot book your own pool!"
+    if current_user == bouncehouse.user
+      flash[:alert] = "You cannot book your own Bouncehouse!"
     elsif current_user.stripe_id.blank?
        flash[:alert] = "Please update your payment method!"
-       return redirect_to payment_path
+       return redirect_to payment_method_path
     else
       start_date = Date.parse(reservation_params[:start_date])
       end_date = Date.parse(reservation_params[:end_date])
       days = (end_date - start_date).to_i + 1
 
-      special_dates = pool.calendars.where(
+      special_dates = bouncehouse.calendars.where(
         "status = ? AND day BETWEEN ? AND ? AND price <> ?",
-        0, start_date, end_date, pool.price
+        0, start_date, end_date, bouncehouse.price
       )
       
       @reservation = current_user.reservations.build(reservation_params)
-      @reservation.pool = pool
-      @reservation.price = pool.price
-      # @reservation.total = pool.price * days
+      @reservation.bouncehouse = bouncehouse
+      @reservation.price = bouncehouse.price
+      # @reservation.total = bouncehouse.price * days
       # @reservation.save
       
-      @reservation.total = pool.price * (days - special_dates.count)
+      @reservation.total = bouncehouse.price * (days - special_dates.count)
       special_dates.each do |date|
           @reservation.total += date.price
       end
       
       if @reservation.Waiting!
-        if pool.Request?
+        if bouncehouse.Request?
           flash[:notice] = "Request sent successfully"
         else
-          charge(pool, @reservation)
+          charge(bouncehouse, @reservation)
         end
       else
         flash[:alert] = "Cannot make a reservation"
       end
       
     end
-    redirect_to pool
+    redirect_to bouncehouse
   end
 
   def previous_reservations
@@ -50,11 +50,11 @@ class ReservationsController < ApplicationController
   end
 
   def current_reservations
-    @pools = current_user.pools
+    @bouncehouses = current_user.bouncehouses
   end
   
   def approve
-    charge(@reservation.pool, @reservation)
+    charge(@reservation.bouncehouse, @reservation)
     redirect_to current_reservations_path
   end
 
@@ -65,33 +65,33 @@ class ReservationsController < ApplicationController
 
   private
   
-  def send_sms(pool, reservation)
+  def send_sms(bouncehouse, reservation)
     @client = Twilio::REST::Client.new
     @client.messages.create(
       from: '+3125488878',
-      to: pool.user.phone_number,
-      body: "#{reservation.user.fullname} booked your '#{pool.listing_name}'"
+      to: bouncehouse.user.phone_number,
+      body: "#{reservation.user.fullname} booked your '#{bouncehouse.listing_name}'"
     )
   end
   
-    def charge(pool, reservation)
+    def charge(bouncehouse, reservation)
       if !reservation.user.stripe_id.blank?
         customer = Stripe::Customer.retrieve(reservation.user.stripe_id)
         charge = Stripe::Charge.create(
           :customer => customer.id,
           :amount => reservation.total * 100,
-          :description => pool.listing_name,
+          :description => bouncehouse.listing_name,
           :currency => "usd", 
           :destination => {
             :amount => reservation.total * 80, # 80% of the total amount goes to the Host, 20% is company fee
-            :account => pool.user.merchant_id # pool's Stripe customer ID
+            :account => bouncehouse.user.merchant_id # bouncehouse's Stripe customer ID
           }
         )
   
         if charge
           reservation.Approved!
-          ReservationMailer.send_email_to_guest(reservation.user, pool).deliver_later if reservation.user.setting.enable_email
-          send_sms(pool, reservation) if pool.user.setting.enable_sms
+          ReservationMailer.send_email_to_guest(reservation.user, bouncehouse).deliver_later if reservation.user.setting.enable_email
+          send_sms(bouncehouse, reservation) if bouncehouse.user.setting.enable_sms
           flash[:notice] = "Reservation created successfully!"
         else
           reservation.Declined!
