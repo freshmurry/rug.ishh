@@ -15,7 +15,7 @@
             <% if @user.confirmation_token %>
               <li>Email Address<span class="pull-right"><i class="fas fa-check-circle"></i></span></li>
             <% end %>
-            <% if current_user.phone_verified %>
+            <% if @user.phone_verified %>
               <li>Phone Number<span class="pull-right"><i class="fas fa-check-circle"></i></span></li>
             <% end %>
             <% if @user.provider %>
