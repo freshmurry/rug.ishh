@@ -1,63 +1,66 @@
-<div class="row">
-  <div class="col-md-3">
-    <div class="center">
-      <%= image_tag avatar_url(current_user), class: "avatar-full" %>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading"><%= current_user.fullname %></div>
-      <div class="panel-body">
-        <ul class="sidebar-list">
-          <div class="container">
-            <% if current_user.phone_verified %>
-              <li>Phone Number<span class="pull-right"><i class="fas fa-check-circle"></i></span></li>
-            <% end %>
-            <% if current_user.confirmation_token %>
-              <li>Email Address<span class="pull-right"><i class="fas fa-check-circle"></i></span></li>
-            <% end %>
-            <% if current_user.provider %>
-              <li>Facebook<span class="pull-right"><i class="fas fa-check-circle"></i></span></li>
-            <% end %>
-          </div> 
-        </ul>
+<section class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="center">
+          <%= image_tag avatar_url(current_user), class: "avatar-full" %>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><%= current_user.fullname %></div>
+          <div class="panel-body">
+            <ul class="sidebar-list">
+              <div class="container">
+                <!--< if current_user.phone_verified %>-->
+                  <li>Phone Number<span class="pull-right"><i class="fas fa-check-circle"></i></span></li>
+                <!--< end %>-->
+                <% if current_user.confirmation_token %>
+                  <li>Email Address<span class="pull-right"><i class="fas fa-check-circle"></i></span></li>
+                <% end %>
+                <% if current_user.provider %>
+                  <li>Facebook<span class="pull-right"><i class="fas fa-check-circle"></i></span></li>
+                <% end %>
+              </div> 
+            </ul>
+          </div>
+        </div>
+      
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="container">
+              <ul class="sidebar-list">
+                <li>Member since: <b><%= @current_user.created_at.strftime("%B %Y") %></b></li>&nbsp;
+                <li>Last login: <b><%= @current_user.last_sign_in_at.strftime("%A, %B %d, %Y") %></b></li>
+              </ul>
+            </div>  
+          </div>
+        </div>
+    
+      </div>
+    
+      <div class="col-md-9">
+    
+       <!-- Notification -->
+        <div class="panel panel-default">
+          <div class="panel-heading">Notifications</div>
+          <div class="panel-body">
+            <div class="container">
+              <%= link_to notifications_path do %>
+                You have <span id="num_of_unread"><%= current_user.unread %></span> notification(s).
+              <% end %>
+            </div>  
+          </div>
+        </div>
+    
+        <!-- Your Listings -->
+        <div class="panel panel-default">
+          <div class="panel-heading">Your Listings (<%= @bouncehouses.length %>)</div>
+          <div class="panel-body">
+            <div class="container">
+              <%= render partial: "bouncehouses/bouncehouses_list", locals: {bouncehouses: @bouncehouses} %>
+            </div>  
+          </div>
+        </div>
       </div>
     </div>
-  
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="container">
-          <ul class="sidebar-list">
-            <li>Member since: <b><%= @current_user.created_at.strftime("%B %Y") %></b></li>&nbsp;
-            <li>Last login: <b><%= @current_user.last_sign_in_at.strftime("%A, %B %d, %Y") %></b></li>
-          </ul>
-        </div>  
-      </div>
-    </div>
-
   </div>
-
-  <div class="col-md-9">
-
-   <!-- Notification -->
-    <div class="panel panel-default">
-      <div class="panel-heading">Notifications</div>
-      <div class="panel-body">
-        <div class="container">
-          <%= link_to notifications_path do %>
-            You have <span id="num_of_unread"><%= current_user.unread %></span> notification(s).
-          <% end %>
-        </div>  
-      </div>
-    </div>
-
-    <!-- Your Listings -->
-    <div class="panel panel-default">
-      <div class="panel-heading">Your Listings (<%= @bouncehouses.length %>)</div>
-      <div class="panel-body">
-        <div class="container">
-          <%= render partial: "bouncehouses/bouncehouses_list", locals: {bouncehouses: @bouncehouses} %>
-        </div>  
-      </div>
-    </div>
-
-  </div>
-</div>
+</section>

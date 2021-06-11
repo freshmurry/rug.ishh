@@ -46,7 +46,7 @@
             <div class="col-md-4">
               <div class="form-group select">
                 <label>Time Limit</label>
-                  <%= f.select :time_limit_gteq, [["2hrs.", "2hrs."], ["4hrs.", "4hrs."], ["6hrs.", "6hrs."], ["8hrs.", "8hrs."]],
+                  <%= f.select :time_limit_gteq, [["8hrs.", "8hrs."]],
                    id: "accommodate", prompt: "Select...", class: "form-control" %>
                 </div>
               </div>
@@ -191,14 +191,14 @@
 
 <script>
   $(function() {
-    $("#q_price_gteq").val('50');
-    $("#q_price_lteq").val('5000');
+    $("#q_price_gteq").val('0');
+    $("#q_price_lteq").val('500');
 
     $("#slider-range").slider({
       range: true,
       min: 0,
-      max: 5000,
-      values: [50, 5000],
+      max: 500,
+      values: [0, 500],
       slide: function(event, ui) {
         $("#q_price_gteq").val(ui.values[0]);
         $("#q_price_lteq").val(ui.values[1]);

@@ -1,65 +1,69 @@
-<div class="row">
-  <div class="col-md-3">
-    <ul class="sidebar-list">
-      <li class="sidebar-item"><%= link_to "Current Listings", bouncehouses_path, class: "sidebar-link" %></li>
-      <li class="sidebar-item"><%= link_to "Current Reservations", current_reservations_path, class: "sidebar-link active" %></li>
-      <li class="sidebar-item"><%= link_to "Previous Reservations", previous_reservations_path, class: "sidebar-link" %></li>
-    </ul>
-  </div>
-  <div class="col-md-9">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        Reservations
+<section class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><%= link_to "Current Listings", bouncehouses_path, class: "sidebar-link" %></li>
+          <li class="sidebar-item"><%= link_to "Current Reservations", current_reservations_path, class: "sidebar-link active" %></li>
+          <li class="sidebar-item"><%= link_to "Previous Reservations", previous_reservations_path, class: "sidebar-link" %></li>
+        </ul>
       </div>
-      <div class="panel-body">
-        <div class="container">
-          <% @bouncehouses.each do |bouncehouse| %>
-              <% bouncehouse.reservations.each do |reservation| %>
-                  <div class="row">
-                    <div class="container">
-                      <div class="col-md-3">
-                        <span>
-                          Reserved by:
-                          <%= link_to user_path(reservation.user) do %>
-                            <%= image_tag (reservation.user.image), class: "img-circle avatar-small" %>
-                            <div><%= reservation.user.fullname %></div>
-                          <% end %>
-                        </span></br>
-                          <%= render partial: "reviews/host_form", locals: {reservation: reservation} if reservation.Approved? %>
-                      </div>&nbsp;
-                      
-                      <div class="col-md-2">
-                        <%= reservation.start_date.strftime('%D') %>
-                        <p><%= reservation.status %></p>
-                        <div>
-                           <% if reservation.Waiting? %>
-                              <%= link_to approve_reservation_path(reservation), method: :post do %> <i class="fa fa-thumbs-up fa-lg"></i> <% end %> |
-                              <%= link_to decline_reservation_path(reservation), method: :post do %> <i class="fa fa-thumbs-down fa-lg"></i> <% end %>
-                          <% end %>
-                        </div>&nbsp;
-                      </div>
-                      
-                      <div class="col-md-4">
-                        <%= link_to bouncehouse_path(reservation.bouncehouse) do %>
-                            <%= image_tag reservation.bouncehouse.cover_photo(:medium) %>
-                            <%= link_to reservation.bouncehouse.listing_name, bouncehouse_path(reservation.bouncehouse) %>
-                        <% end %>
-                      </div>
-                    </div>
-                  </div>
-                <hr/>
-              <% end %>
-          <% end %>
-          <div class="col-md-12 text-center">
-            <% if @reservations.blank? %>
-              <h3>You don't have any current reservations</h3><br/>
-              <%= link_to "Search for Bounce Houses", search_path, class: "btn btn-normal" %>
-            <% else %>
-              <%= column_chart @reservation.Waiting, colors: ["#16A085"] %>
-            <% end %>
+      <div class="col-md-9">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Reservations
           </div>
-        </div>  
+          <div class="panel-body">
+            <div class="container">
+              <% @bouncehouses.each do |bouncehouse| %>
+                  <% bouncehouse.reservations.each do |reservation| %>
+                      <div class="row">
+                        <div class="container">
+                          <div class="col-md-3">
+                            <span>
+                              Reserved by:
+                              <%= link_to user_path(reservation.user) do %>
+                                <%= image_tag (reservation.user.image), class: "img-circle avatar-small" %>
+                                <div><%= reservation.user.fullname %></div>
+                              <% end %>
+                            </span></br>
+                              <%= render partial: "reviews/host_form", locals: {reservation: reservation} if reservation.Approved? %>
+                          </div>&nbsp;
+                          
+                          <div class="col-md-2">
+                            <%= reservation.start_date.strftime('%D') %>
+                            <p><%= reservation.status %></p>
+                            <div>
+                               <% if reservation.Waiting? %>
+                                  <%= link_to approve_reservation_path(reservation), method: :post do %> <i class="fa fa-thumbs-up fa-lg"></i> <% end %> |
+                                  <%= link_to decline_reservation_path(reservation), method: :post do %> <i class="fa fa-thumbs-down fa-lg"></i> <% end %>
+                              <% end %>
+                            </div>&nbsp;
+                          </div>
+                          
+                          <div class="col-md-4">
+                            <%= link_to bouncehouse_path(reservation.bouncehouse) do %>
+                                <%= image_tag reservation.bouncehouse.cover_photo(:medium) %>
+                                <%= link_to reservation.bouncehouse.listing_name, bouncehouse_path(reservation.bouncehouse) %>
+                            <% end %>
+                          </div>
+                        </div>
+                      </div>
+                    <hr/>
+                  <% end %>
+              <% end %>
+              <div class="col-md-12 text-center">
+                <% if @reservations.blank? %>
+                  <h3>You don't have any current reservations</h3><br/>
+                  <%= link_to "Search for Bounce Houses", search_path, class: "btn btn-normal" %>
+                <% else %>
+                  <%= column_chart @reservation.Waiting, colors: ["#16A085"] %>
+                <% end %>
+              </div>
+            </div>  
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>  

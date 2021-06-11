@@ -3,7 +3,7 @@
 @import "toastr";
 @import "fullcalendar";
 
-// For separting pool's key features into two colums on pools/shows
+// For separting room's key features into two colums on rooms/shows
 // @media only screen and (max-width: 768px) {
 //   .row.text-babu.text-center {
 //     width: 50%;
@@ -22,10 +22,11 @@ html {
 }
 
 body {
-  color: #565a5c;
-  background-color: #FFF;
+  margin: 0;
+  // color: #565a5c;
+  // background-color: #FFF;
   font-family: "Varela Round", "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  padding-bottom: 200px;
+  padding-bottom: 175px;
   position: relative;
   overflow-x: hidden;
   width: 100%;
@@ -37,8 +38,124 @@ body {
             box-sizing: border-box;
 }
 
+.container {
+  width: 100%;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  margin-right: auto;
+  margin-left: auto;
+}    
+
+.page-section {
+  padding: 6rem 0;
+}
+
+.page-section h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+h4.my-3 {
+  font-weight: 700;
+}
+
+.page-section .bg-light{
+  padding: 6rem 0;
+  
+}
+
+.bg-light {
+  width: 100%;
+}
+
+// HEADER
+header {
+  // background-image: url('https://www.trulia.com/pictures/thumbs_5/zillowstatic/fp/681db9e54e12d56d3c8fbae7a5729902-full.webp');
+  color: white !important;
+  text-shadow: rgb(0, 0, 0) 2px 1px;
+}
+
+.page-header {
+  position: relative;
+  // padding-top: 8rem;
+  // padding-bottom: inherit;
+  margin: 0;
+  // font-color: white !important;
+}
+
+.page-header-content {
+  margin-top: 120px;
+}
+
+// h1 .page-header-title {
+//   text-size: 60px;
+//   color: #FFF !important;
+// }
+
+.overlay {
+  position: relative;
+}
+
+.bg-img-cover {
+  background-position: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}
+
+.overlay-90:before {
+  opacity: .9;
+}
+.overlay-primary:before {
+  /* background-color: #0061f2!important; */
+}
+
+.overlay:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  // background-color: #000;
+  opacity: .3;
+}
+// END HEADER
+
+.col-lg-4 .discovery-card {
+  width: 30rem;
+  height: 30rem;
+  border: 0.5rem solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
+  text-align: center;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-radius: 50% !important;
+  vertical-align: middle;
+  border-style: none;
+}
+
 a {
   color: #34495E;
+  // color: #00A699;
+}
+
+h1 {
+  font-size: 50px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+h3 {
+  // font-size: 30px;
+  // font-weight: 600;
 }
 
 .container {
@@ -48,6 +165,7 @@ a {
 .container h3 {
   margin-right: -40px;
   margin-left: -40px;
+  text-align: center;
 }
 
 div.panel-body {
@@ -65,7 +183,7 @@ div.panel-body {
 }
 
 .text-blue, .icon-red {
-  color: #14325C;
+  color: #34495E;
 }
 
 // NAVBARS
@@ -80,7 +198,7 @@ div.panel-body {
 }
 
 .navbar-default .navbar-brand {
-  color: #2C3E50;
+  color: #FF385C;
   font-size: 2.5em;
   font-weight: bold; font-family: Ubuntu;
   margin-top: 5px;
@@ -104,8 +222,14 @@ ul.nav.navbar-nav.navbar-right a {
 .btn {
   color: #fff;
   border-radius: 5px;
+  font-weight: bold;
   padding: 9px 27px;
-  font-family: Ubuntu;
+}
+
+.btn-small {
+  padding: 5px 15px;
+  margin-top: 15px;
+  // color: #FF385C;
 }
 
 .btn:hover, .btn:focus {
@@ -123,8 +247,8 @@ ul.nav.navbar-nav.navbar-right a {
 }
 
 .btn.btn-normal {
-  border: 1px solid #34495E;
-  background-color: #34495E;
+  border: 1px solid #FF385C;
+  background-color: #FF385C;
 }
 
 .btn.btn-normal:active {
@@ -134,21 +258,9 @@ ul.nav.navbar-nav.navbar-right a {
 }
 
 .btn.btn-form {
-  border: 1px solid #34495E;
-  background-color: #34495E;
-}
-
-// .btn-small {
-//   padding: 5px 15px;
-//   margin-top: 15px;
-// }
-
-.btn.btn-form.btn-small {
-  margin-left: 10px;
-}
-
-button.btn.btn-form.btn-small {
-  margin-top: 10px;
+  border: 1px outset #CCC;
+  background-color: #FF385C;
+  // border-radius: 2px;
 }
 
 .btn.btn-form:active {
@@ -350,7 +462,7 @@ button.btn.btn-form.btn-small {
   box-sizing: border-box;
 }
 
-// POOL SHOW
+// ROOM SHOW
 .amenities li {
   margin-bottom: 10px;
   font-size: 16px;
@@ -363,22 +475,15 @@ button.btn.btn-form.btn-small {
   font-size: 14px;
 }
 
-div.price-box-wrapper {
-  position: absolute;
-  padding: 4px 8px;
-  color: #fff;
-  background-color: rgba(0,0,0,.5);
-  text-align: center;
-  box-sizing: border-box;
-}
-
-div.box-wrapper {
-  padding: 4px 8px;
-  color: #fff;
-  // background-color: rgba(0,0,0,.5);
-  box-sizing: border-box;
-  font-size: 14px;
-  font-weight: bold;
+.price-box-wrapper {
+    position: relative;
+    right: 25px;
+    bottom: 50px;
+    padding: 4px 8px;
+    border-radius: 3px;
+    color: #FFF;
+    background-color: #212429;
+    text-align: center;
 }
 
 // RESERVATIONS
@@ -608,5 +713,7 @@ div.box-wrapper {
 }
 
 .container .text-muted {
-    margin: 20px -55px 20px -55px;
+  margin: 20px -55px 20px -55px;
 }
+
+// END FOOTER //

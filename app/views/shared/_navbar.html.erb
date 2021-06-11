@@ -8,35 +8,41 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "BouncyGroup", root_path, class: "navbar-brand" %>
+      <%= link_to "Berwyn Bounce House", root_path, class: "navbar-brand" %>
       <!--< link_to image_tag("icon.svg", alt: "logo"), root_path, class: "navbar-brand" %>-->
     </div>
+    
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div id="navbar" class="navbar-collapse collapse">
-     <%= form_tag search_path, class: "navbar-form navbar-left", method: :get do %>
-          <div class="form-group">
-            <%= text_field_tag :search, params[:search], placeholder: "Bounce Houses Near You", class: "form-control", id:"autoaddress" %>
-          </div>
-      <% end %>
       
       <ul class="nav navbar-nav navbar-right">
         <% if (!user_signed_in?) %>
           <li>
-            <!--<button class="btn btn-form btn-small">-->
-              <%= link_to "List a Bounce House", new_user_registration_path, style: "text-decoration: none;" %>
-            <!--</button>-->
+            <% if current_user && current_user.id == 1 %>
+              
+              <% else %>
+            <button class="btn btn-form btn-small">
+              <%= link_to "Book Now", new_user_registration_path, style: "color: white; text-decoration: none;" %>
+            </button>
+            <% end %>
           </li>
+          <!--<li><= link_to "773-727-5654", style: "text-decoration: none;" %></li>-->
+          <li><%= link_to "About", about_path, style: "text-decoration: none;" %></li>
           <li><%= link_to "Login", new_user_session_path %></li>
           <li><%= link_to "Sign Up", new_user_registration_path %></li>
         <% else %>
           <li>
-            <!--<button class="btn btn-form btn-small">-->
-              <%= link_to "List a Bounce House", new_bouncehouse_path, style: "text-decoration: none;" %>
-            <!--</button>-->
+            <% if current_user && current_user.id == 1 %>
+              
+              <% else %>
+            <button class="btn btn-form btn-small">
+              <%= link_to "Book Now", bouncehouse_path(id: 1), style: "color: white; text-decoration: none;" %>
+            </button>
+            <% end %>
           </li>
           <li>
             <%= link_to notifications_path do %>
-              <i class="fa fa-envelope fa-2x icon-babu"></i>
+              <i class="fa fa-bell fa-2x icon-babu"></i>
               <span class="badge" id="navbar_num_of_unread"><%= current_user.unread if current_user.unread > 0 %></span>
             <% end %>
           </li>
@@ -49,10 +55,23 @@
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "Dashboard", dashboard_path %></li>
+              <% if current_user && current_user.id != 1 %>
+        
+              <% else %>
               <li><%= link_to "Manage Listing", bouncehouses_path %></li>
-              <li><%= link_to "List a Bounce House", new_bouncehouse_path %></li>
+              <% end %>
+              <% if current_user && current_user.id == 1 %>
+              
+              <% else %>
+              <li><%= link_to "Book Now", new_bouncehouse_path %></li>
+              <% end %>
               <li><%= link_to "Previous Reservations", previous_reservations_path %></li>
               <li><%= link_to "Current Reservations", current_reservations_path %></li>
+              <% if current_user && current_user.id == 1 %>
+              <li><%= link_to "Create Listing", new_bouncehouse_path %></li>
+              <% else %>
+              
+              <% end %>
               <li role="separator" class="divider"></li>
               <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
               <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
@@ -68,14 +87,40 @@
   <nav class="navbar navbar-default static-top" style="background-color: #ECF0F1;">
     <div class="container">
       <ul class="nav navbar-nav">
-        <li <% if current_page?(current_user) %> class="active" <% end %> ><%= link_to "Profile", current_user %></li>
         <li <% if current_page?(dashboard_path) %> class="active" <% end %> ><%= link_to "Dashboard", dashboard_path %></li>
-        <li <% if current_page?(bouncehouses_path) %> class="active" <% end %> ><%= link_to "Manage Listings", bouncehouses_path %></li>
+        
+        <% if current_user && current_user.id != 1 %>
+        
+        <% else %>
+          <li <% if current_page?(bouncehouses_path) %> class="active" <% end %> ><%= link_to "Manage Listings", bouncehouses_path %></li>
+        <% end %>
+        
         <li <% if current_page?(conversations_path) %> class="active" <% end %> ><%= link_to "Messages", conversations_path %></li>
-        <li <% if current_page?(revenues_path) %> class="active" <% end %> ><%= link_to "Revenues", revenues_path %></li>
-        <li <% if current_page?(current_reservations_path) %> class="active" <% end %> ><%= link_to "Current Reservations", current_reservations_path %></li>
-        <li <% if current_page?(host_calendar_path) %> class="active" <% end %> ><%= link_to "Host Calendar", host_calendar_path %></li>
-        <li <% if current_page?(payment_method_path) %> class="active" <% end %> ><%= link_to "Account Settings", payment_method_path %></li>
+        
+        <% if current_user && current_user.id != 1 %>
+        
+        <% else %>
+          <li <% if current_page?(revenues_path) %> class="active" <% end %> ><%= link_to "Revenues", revenues_path %></li>
+        <% end %>
+          <li <% if current_page?(current_reservations_path) %> class="active" <% end %> ><%= link_to "Current Reservations", current_reservations_path %></li>
+        
+        <% if current_user && current_user.id != 1 %>
+        
+        <% else %>
+          <li <% if current_page?(host_calendar_path) %> class="active" <% end %> ><%= link_to "Host Calendar", host_calendar_path %></li>
+        <% end %>
+        
+        <% if current_user && current_user.id != 1 %>
+          <li <% if current_page?(payment_method_path) %> class="active" <% end %> ><%= link_to "Account Settings", payment_method_path %></li>
+        <% else %>
+          <li <% if current_page?(payout_method_path) %> class="active" <% end %> ><%= link_to "Account Settings", payout_method_path %></li>
+        <% end %>
+        
+        <% if current_user && current_user.id == 1 %>
+          <li <% if current_page?(new_bouncehouse_path) %> class="active" <% end %> ><%= link_to "Create Listing", new_bouncehouse_path %></li>
+        <% else %>
+        
+        <% end %>
       </ul>
     </div>
   </nav>

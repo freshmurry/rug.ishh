@@ -2,11 +2,11 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, 
-         :confirmable, :omniauthable  
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable  
   
   validates :fullname, presence: true, length: {maximum: 50}
   
+  has_attached_file :avatar
   has_many :bouncehouses
   has_many :reservations
   
@@ -49,7 +49,7 @@ class User < ApplicationRecord
   end
   
   def send_pin
-    @guest = Twilio::REST::guest.new
+    @guest = Twilio::REST::Client.new
     @guest.messages.create(
       from: '+3125488878',
       to: self.phone_number,

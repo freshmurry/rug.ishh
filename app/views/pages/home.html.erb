@@ -1,25 +1,32 @@
-<div class="row">
-  <div class="col-md-12 banner text-center">
-    <h1><span class="text-blue">Book and rent a bounce house</span> simple and easy.</h1>
-  </div>
 
-  <div class="col-md-12"><h4>Search for a bounce house in your neighborhood</h4></div>
-</div>
-
-
-  <div class="row">
-    <div class="col-md-6">
-      <%= form_tag search_path, method: :get do %>
-
-      <%= text_field_tag :search, params[:search], placeholder: "Search Bounce Houses", class: "form-control", id: "autolocation" %>
-    </div>&nbsp;
-
-    <div class="col-md-2">
-      <%= submit_tag "Search", class: "btn btn-form btn-block" %>
+<header class="page-header bg-img-cover overlay overlay-primary overlay-90 page-header-dark" style="background-image: url('https://www.canyonpartyrental.com/wp-content/uploads/2019/06/IMG_1244.jpg');">
+  <div class="page-header-content py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 banner">
+          <h1><span class="text-red">Rent a Bounce House</span> Simple and Easy.</h1>
+          
+          <div class="">
+			    	<div class="col-md-6">
+			        <%= form_tag search_path, method: :get do %>
+			        
+			        <%= text_field_tag :search, params[:search], placeholder: "Search Rentals", class: "form-control", id: "autolocation" %>
+			      </div>&nbsp;
+			        
+			      <div class="col-md-2">
+			        <%= submit_tag "Search", class: "btn btn-form" %>
+			      </div>
+			    </div>
+			    <% end %>
+        </div>
+      </div>
     </div>
   </div>
-
-<% end %>
+  
+  <sbpro-border>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 10.34" preserveAspectRatio="none" fill="currentColor"></svg>
+  </sbpro-border>
+</header>
 
 <br>
 
@@ -35,60 +42,45 @@
 
 <!--<h2 class="col-md-12 banner"><span class="text-blue">Why use</span> bouncehouseCrasher</h2>-->
 
-<!-- CITIES -->
-<div class="text-center"><h2>BounceGroup in other Cities Coming Soon!</h2></div>
-<br/>
+<!-- HOW It WORKS -->
+<section class="">
+  <div class="container">
+    <div class="page-section">
+    <div class="banner text-center">
+     	<h2 class="text-blue">How to Rent a Bounce House</h2>
+      <h3></h3>
+    </div>
+        
+    <div class="row text-center">
+      <div class="col-md-4">
+      <div class="fas fa-home fa-4x text-blue"></div>
+        <h3 class="my-3">Explore Our Bounce Houses</h3>
+        <p class="text-center">Like what you see? Request to book a bounce house, and await approval for your day. Listings with a <i class="fa fa-bolt" style="color: #ffb400"></i> icon can be booked instantly.</p>
+      </div>
+                        
+      <div class="col-md-4">
+      <div class="fas fa-envelope fa-4x text-blue"></div>
+        <h3>Message and Chat</h3>
+        <p class="text-center">Send us a message and we will respond to you in a timely manner.</p>
+      </div>
+                        
+      <div class="col-md-4">
+      <div class="fas fa-credit-card fa-4x text-blue"></div>
+       	<h3>Book and Pay</h3>
+       	<p class="text-center">Our calender system helps both you and us to see your reservation in realtime. Also, you can prepay through our secure online checkout.</p>
+      </div>
+      
+      <div class="row">
+        <div class="banner col-lg-12 text-center">
+          <button class="btn btn-form">
+            <%= link_to "Sign Me Up!", new_user_registration_path, style: "text-decoration: none; color: #FFF; font-weight: 500; font-size: 20px" %>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="row">
-  <div class="col-md-3 col-sm-3">
-		<a href="https://bouncegroup.herokuapp.com/search?utf8=✓&search=chicago">
-			<div class="discovery-card" style="background-image: url('/assets/chicago.jpg')">
-				<div class="va-container">
-					<div class="va-middle text-center">
-						<h2><strong>Chicago</strong></h2>
-					</div>
-				</div>
-			</div>
-		</a>
-	</div>
-  
-	<div class="col-md-3 col-sm-3">
-		<a href="https://bouncegroup.herokuapp.com/search?utf8=✓&search=atlanta">
-			<div class="discovery-card" style="background-image: url('/assets/atlanta.jpg')">
-				<div class="va-container">
-					<div class="va-middle text-center">
-						<h2><strong>Atlanta</strong></h2>
-					</div>
-				</div>
-			</div>
-		</a>
-	</div>
-  
-	<div class="col-md-3 col-sm-3">
-		<a href="https://bouncegroup.herokuapp.com/search?utf8=✓&search=losangeles">
-			<div class="discovery-card" style="background-image: url('/assets/la.jpg')">
-				<div class="va-container">
-					<div class="va-middle text-center">
-						<h2><strong>Los Angeles</strong></h2>
-					</div>
-				</div>
-			</div>
-		</a>
-	</div>
-	
-	<div class="col-md-3 col-sm-3">
-		<a href="https://bouncegroup.herokuapp.com/search?utf8=✓&search=houston">
-			<div class="discovery-card" style="background-image: url('/assets/houston.jpg')">
-				<div class="va-container">
-					<div class="va-middle text-center">
-						<h2><strong>Houston</strong></h2>
-					</div>
-				</div>
-			</div>
-		</a>
-	</div>
-
-</div>
 
 <script>
   $('#start_date').datepicker({

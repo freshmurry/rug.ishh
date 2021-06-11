@@ -137,6 +137,20 @@ ActiveRecord::Schema.define(version: 20180109174910) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "fullname"
+    t.string   "phone_number"
+    t.string   "address"
+    t.text     "description"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "image"
+    t.string   "access_token"
+    t.string   "stripe_id"
+    t.string   "merchant_id"
+    t.integer  "unread",                 default: 0
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

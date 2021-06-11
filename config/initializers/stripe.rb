@@ -1,7 +1,7 @@
 Rails.configuration.stripe = {
   #---- TEST ----
-  # :publishable_key => 'pk_test_51HBlcnECjG0RNiV0zVi05XLlHNI1pVQPRuVC2osB16L8wGrHrilvHRTSlyhkKYusxmfu0sCt8Qsulkxmlx5wPrU500RPHbdFaM',
-  # :secret_key => 'sk_test_51HBlcnECjG0RNiV071N2SuUyVAgNR1YTRBsAsvNq4GY6BUYHPZGkOutNyBA1HocobHhA3wssI56kFvBJCijunTsV00KqYnmC0i'
+  # :publishable_key => 'pk_test_51IqqNyLs2KRAx7O74Rco5xBGzF09TqvyYGQsQMP44sUuI7iOYmk1JsQi6CtsmJNhnt3mWNhi1SCUb9tgVsVEl9lV00KKiSVdfh',
+  # :secret_key => 'sk_test_51IqqNyLs2KRAx7O7IV1qUi4xuqJWN1kotmRDm2ECPOMvCEVtSkCKye0SibKd1lUWp1aSSI9oNNUfu8vknfwmvdJv00s6XHBtWZ'
   
   #---- LIVE ----
   :publishable_key => ENV['STRIPE_PUBLISHABLE_KEY'],
