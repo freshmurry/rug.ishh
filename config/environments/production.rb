@@ -31,7 +31,9 @@ Rails.application.configure do
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.js_compressor = Uglifier.new(harmony: true)
-  # config.assets.css_compressor = :sass
+  
+  config.assets.precompile += %w( '.svg' )  
+  config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
@@ -88,7 +90,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   #Required for Heroku
-  # config.action_mailer.default_url_options = { host: 'https://berwynbouncehouse.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'https://berwynbouncehouse.herokuapp.com' }
 
   config.action_mailer.raise_delivery_errors = true
   
