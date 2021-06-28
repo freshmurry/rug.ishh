@@ -1,19 +1,23 @@
-<div class="panel">
+<section>
   <div class="container">
-    <div class="panel-body">
-
-      <strong><%= notification.content %></strong>
-
-      <span class="pull-right"><%= notification.created_at.to_formatted_s(:short) %></span>
-
-      <div>
-      	<span class="pull-right">
-        	<%= link_to notification_settings_path(notification), remote: true, method: :delete, data: { confirm: "Are you sure?", remoten: true } do %>
-         		<i class="fas fa-trash-alt fa-md"></i>
-        	<% end %>   
-      	</span>
+    <div class="panel">
+      <div class="container">
+        <div class="panel-body">
+    
+          <strong><%= notification.content %></strong>
+    
+          <span class="pull-right"><%= notification.created_at.to_formatted_s(:short) %></span>
+    
+          <div>
+          	<span class="pull-right">
+            	<%= link_to notification_settings_path(notification), remote: true, method: :delete, data: { confirm: "Are you sure?", remoten: true } do %>
+             		<i class="fas fa-trash-alt fa-md"></i>
+            	<% end %>   
+          	</span>
+          </div>
+    
+        </div>
       </div>
-
     </div>
   </div>
-</div>
+</section>  

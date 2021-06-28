@@ -21,16 +21,16 @@
             </div>&nbsp;
     
             <div class="col-md-3 text-center">
-              <%= image_tag avatar_url(@bouncehouse.user), class: "img-circle avatar-large" %><br/>
-              <%= link_to user_path(@bouncehouse.user) do %>
-              <%= @bouncehouse.user.fullname %>
-              <% end %>
+              <!--<= image_tag avatar_url(@bouncehouse.user), class: "img-circle avatar-large" %><br/>-->
+              <!--<= link_to user_path(@bouncehouse.user) do %>-->
+              <!--<= @bouncehouse.user.fullname %>-->
+              <!--< end %>-->
               <div>
                 <span id="average_rating"></span>
               </div>
               <div class="center">
                 <% if current_user && current_user != @user %>
-                  <%= link_to "Message Host", conversations_path(sender_id: current_user.id, recipient_id: @bouncehouse.user.id), method: :post, class: "btn btn-default" %>
+                  <%= link_to "Send A Message", conversations_path(sender_id: current_user.id, recipient_id: @bouncehouse.user.id), method: :post, class: "btn btn-default" %>
                 <% end %>
               </div>
             </div>

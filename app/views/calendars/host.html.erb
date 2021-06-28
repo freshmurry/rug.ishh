@@ -1,24 +1,28 @@
-<% if !@bouncehouses.blank? %>
-  <div class="row">
-    <%= search_form_for @search, class: 'form-group', remote: true, url: host_calendar_path do |f| %>
-      <div class="col-md-6 select">
-        <div class="form-group">
-          <label>Your Listings</label>
-          <%= f.select :bouncehouse_id, options_for_select(@bouncehouses.collect {|u| [u.listing_name, u.id]}, params[:bouncehouse_id]), {}, {
-            onchange: "$(this.form).submit()",
-            class: "form-control"
-          } %>
-        </div>
+<section class="">
+  <div class="container">
+    <% if !@bouncehouses.blank? %>
+      <div class="row">
+        <%= search_form_for @search, class: 'form-group', remote: true, url: host_calendar_path do |f| %>
+          <div class="col-md-6 select">
+            <div class="form-group">
+              <label>Your Listings</label>
+              <%= f.select :bouncehouse_id, options_for_select(@bouncehouses.collect {|u| [u.listing_name, u.id]}, params[:bouncehouse_id]), {}, {
+                onchange: "$(this.form).submit()",
+                class: "form-control"
+              } %>
+            </div>
+          </div>
+    
+          <%= f.hidden_field :start_date, id: "start-date", value: params[:start_date], onchange: "$(this.form).submit()" %>
+        <% end %>
       </div>
-
-      <%= f.hidden_field :start_date, id: "start-date", value: params[:start_date], onchange: "$(this.form).submit()" %>
     <% end %>
+    
+    <%= render 'form' %>
+    
+    <div id="calendar"></div>
   </div>
-<% end %>
-
-<%= render 'form' %>
-
-<div id="calendar"></div>
+</section>
 
 <script>
   window.reservations = <%= raw @events.to_json %>
@@ -75,9 +79,8 @@
           cell.append('<span class="day-price">' + '$<%= @bouncehouse.price %>' + '</span>')
         }
       <% end %>
-
-
     },
+    
     selectable: true,
     select: function(start, end, jsEvent, view) {
       var start_date = moment(start);
@@ -127,6 +130,4 @@
     $('#start-date').val(moment(next).format('MM/DD/YYYY'))
     $('#start-date').trigger('change')
   });
-
-
 </script>
