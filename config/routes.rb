@@ -72,4 +72,6 @@ Rails.application.routes.draw do
    get '/notifications' => 'notifications#index'
 
    mount ActionCable.server => '/cable'
+   
+   get 'sitemap.xml', :to => 'sitemap#index', :defaults => {:format => 'xml'}
 end
