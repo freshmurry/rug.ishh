@@ -73,5 +73,4 @@ Rails.application.routes.draw do
 
    mount ActionCable.server => '/cable'
    
-   get 'sitemap.xml', :to => 'sitemap#index', :defaults => {:format => 'xml'}
 end
