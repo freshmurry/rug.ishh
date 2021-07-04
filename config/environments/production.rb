@@ -96,7 +96,7 @@ Rails.application.configure do
   
     # config.action_mailer.delivery_method = :smtp
     # host = 'https://www.berwynbouncehouse.com'
-    config.action_mailer.default_url_options = { host: 'www.berwynbouncehouse.com' }
+    config.action_mailer.default_url_options = { host: 'https://www.berwynbouncehouse.com' }
     # ActionMailer::Base.smtp_settings = {
     #   :address        => 'smtp.sendgrid.net',
     #   :port           => '587',
@@ -112,8 +112,7 @@ Rails.application.configure do
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
       address: 'smtp.mailgun.org',
-      # port: 2525,
-      port: 587,
+      port: 2525,
       domain: 'sandbox21995eb59911415d9805603765d3507f.mailgun.org',
       authentication: 'plain',
       user_name: 'postmaster@sandbox21995eb59911415d9805603765d3507f.mailgun.org',
