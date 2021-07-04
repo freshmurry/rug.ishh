@@ -90,13 +90,13 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   #Required for Heroku
-  config.action_mailer.default_url_options = { host: 'https://berwynbouncehouse.herokuapp.com' }
+  # config.action_mailer.default_url_options = { host: 'https://berwynbouncehouse.herokuapp.com' }
 
   config.action_mailer.raise_delivery_errors = true
   
     config.action_mailer.delivery_method = :smtp
-    host = 'https://www.berwynbouncehouse.com'
-    config.action_mailer.default_url_options = { host: host }
+    # host = 'https://www.berwynbouncehouse.com'
+    config.action_mailer.default_url_options = { host: 'https://www.berwynbouncehouse.com' }
     ActionMailer::Base.smtp_settings = {
       :address        => 'smtp.sendgrid.net',
       :port           => '587',
