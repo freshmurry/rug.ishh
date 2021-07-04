@@ -94,17 +94,30 @@ Rails.application.configure do
 
   config.action_mailer.raise_delivery_errors = true
   
-    config.action_mailer.delivery_method = :smtp
+    # config.action_mailer.delivery_method = :smtp
     # host = 'https://www.berwynbouncehouse.com'
-    config.action_mailer.default_url_options = { host: 'https://www.berwynbouncehouse.com' }
-    ActionMailer::Base.smtp_settings = {
-      :address        => 'smtp.sendgrid.net',
-      :port           => '587',
-      :authentication => :plain,
-      :user_name      => ENV['SENDGRID_USERNAME'],
-      :password       => ENV['SENDGRID_PASSWORD'],
-      :domain         => 'https://www.berwynbouncehouse.com',
-      :enable_starttls_auto => true
+    config.action_mailer.default_url_options = { host: 'www.berwynbouncehouse.com' }
+    # ActionMailer::Base.smtp_settings = {
+    #   :address        => 'smtp.sendgrid.net',
+    #   :port           => '587',
+    #   :authentication => :plain,
+    #   :user_name      => ENV['SENDGRID_USERNAME'],
+    #   :password       => ENV['SENDGRID_PASSWORD'],
+    #   :domain         => 'www.berwynbouncehouse.com',
+    #   :enable_starttls_auto => true
+    # }
+  
+    # Mailgun Integration
+  
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address: 'smtp.mailgun.org',
+      # port: 2525,
+      port: 587,
+      domain: 'sandbox21995eb59911415d9805603765d3507f.mailgun.org',
+      authentication: 'plain',
+      user_name: 'postmaster@sandbox21995eb59911415d9805603765d3507f.mailgun.org',
+      password: '76ac6059412cb1dcd52a8d3cecedd935-602cc1bf-11e0df28'
     }
   
   if ENV["RAILS_LOG_TO_STDOUT"].present?
