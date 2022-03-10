@@ -6,13 +6,11 @@ class CreateBouncehouses < ActiveRecord::Migration[5.0]
       t.string :address
       t.string :listing_name
       t.text :description
-      t.string :time_limit
       t.integer :price
       t.integer :tip
       t.boolean :active
       t.float :latitude
       t.float :longitude
-      t.integer :instant, deafault: 1
       t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false

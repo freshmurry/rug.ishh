@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <%= image_tag (message.user.image), class: "img-circle avatar-small" %>
+          <%= image_tag avatar_url(message.user), class: "img-circle avatar-medium" %>
           <%= message.user.fullname %>
           <span class="pull-right"><%= message.message_time %></span>
         </div>

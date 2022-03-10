@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180109174910) do
+ActiveRecord::Schema.define(version: 20171024222621) do
 
   create_table "bouncehouses", force: :cascade do |t|
     t.string   "bouncehouse_type"
@@ -18,13 +18,11 @@ ActiveRecord::Schema.define(version: 20180109174910) do
     t.string   "address"
     t.string   "listing_name"
     t.text     "description"
-    t.string   "time_limit"
     t.integer  "price"
     t.integer  "tip"
     t.boolean  "active"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "instant"
     t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
@@ -147,12 +145,12 @@ ActiveRecord::Schema.define(version: 20180109174910) do
     t.string   "stripe_id"
     t.string   "merchant_id"
     t.integer  "unread",                 default: 0
+    t.string   "pin"
+    t.boolean  "phone_verified"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "pin"
-    t.boolean  "phone_verified"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

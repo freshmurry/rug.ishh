@@ -8,6 +8,10 @@ module ApplicationHelper
     end
   end
   
+  def image_url(user)
+    
+  end  
+  
   def stripe_express_path
   # ----- TEST -----
   "https://connect.stripe.com/express/oauth/authorize?redirect_uri=https://connect.stripe.com/connect/default/oauth/test&client_id=ca_JTqdRf8V2CW9ExyXQpkHrheJYb8ZXUyP&state={STATE_VALUE}"

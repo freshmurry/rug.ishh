@@ -52,6 +52,7 @@
         </div>
     
         <!-- Your Listings -->
+        <% if current_user && current_user.id == 1 %>
         <div class="panel panel-default">
           <div class="panel-heading">Your Listings (<%= @bouncehouses.length %>)</div>
           <div class="panel-body">
@@ -60,6 +61,9 @@
             </div>  
           </div>
         </div>
+        <% else %>
+        
+        <% end %>
       </div>
     </div>
   </div>

@@ -6,15 +6,14 @@
           <% if current_user && current_user.id == 1 %>
           <li class="sidebar-item"><%= link_to "Current Listings", bouncehouses_path, class: "sidebar-link" %></li>
           <% else %>
-          <li class="sidebar-item"><%= link_to "Current Reservations", current_reservations_path, class: "sidebar-link" %></li>
-          <li class="sidebar-item"><%= link_to "Previous Reservations", previous_reservations_path, class: "sidebar-link active" %></li>
+          <li class="sidebar-item"><%= link_to "Purchases", previous_reservations_path, class: "sidebar-link active" %></li>
           <% end %>
         </ul>
       </div>
       <div class="col-md-9">
         <div class="panel panel-default">
           <div class="panel-heading">
-            Previous Reservations
+            Purchase History
           </div>
           <div class="panel-body">
           <div class="container">

@@ -3,13 +3,13 @@
     <div class="container">
       <div class="row">
         <div class="col-md-7 banner">
-          <h1><span class="text-red">Rent a Bounce House or Inflatable Water Slide</span> Simple and Easy.</h1>
+          <h1><span class="text-red">Start Your Bounce House Rental Business</span> Simple and Easy.</h1>
           
           <div class="">
 			    	<div class="col-md-6">
 			        <%= form_tag search_path, method: :get do %>
 			        
-			        <%= text_field_tag :search, params[:search], placeholder: "Search Rentals", class: "form-control", id: "autolocation" %>
+			        <%= text_field_tag :search, params[:search], placeholder: "Search Bounce Houses", class: "form-control", id: "autolocation" %>
 			      </div>&nbsp;
 			        
 			      <div class="col-md-2">
@@ -31,7 +31,7 @@
 
 <!-- BOUNCE HOUSES -->
 <div class="text-center"><h2>Bounce Houses Near You</h2>
-  <p>Book and rent a bounce house or inflatable water slide</p>
+  <p>Browse our assortment of bounce houses and inflatable water slides</p>
 </div>
 <br/>
 
@@ -50,33 +50,33 @@
   <div class="container">
     <div class="page-section">
       <div class="banner text-center">
-       	<h2 class="text-blue">How to Rent a Bounce House</h2>
+       	<h2 class="text-blue">How it Works</h2>
         <h3></h3>
       </div>
         
       <div class="row text-center">
         <div class="col-md-4">
         <div class="fas fa-home fa-4x text-blue"></div>
-          <h3 class="my-3">Explore Our Bounce Houses</h3>
-          <p class="text-center">Like what you see? Request to book a bounce house, and await approval for your day. Listings with a <i class="fa fa-bolt" style="color: #ffb400"></i> icon can be booked instantly.</p>
+          <h3 class="my-3">Register and Look Around</h3>
+          <p class="text-center">Explore our various assortment of bounce houses.</p>
         </div>
                           
         <div class="col-md-4">
         <div class="fas fa-envelope fa-4x text-blue"></div>
-          <h3>Message and Chat</h3>
+          <h3>Send Us a Message</h3>
           <p class="text-center">Send us a message and we will respond to you in a timely manner.</p>
         </div>
                           
         <div class="col-md-4">
         <div class="fas fa-credit-card fa-4x text-blue"></div>
-         	<h3>Book and Pay</h3>
-         	<p class="text-center">Our calender system helps both you and us to see your reservation in realtime. Also, you can prepay through our secure online checkout.</p>
+         	<h3>Purchase Your Bounce House</h3>
+         	<p class="text-center">Using our secure online checkout, custermers will be able to pay using any major credit or debit card.</p>
         </div>
         
         <div class="row">
           <div class="banner col-lg-12 text-center">
             <button class="btn btn-form">
-              <%= link_to "Sign Me Up!", new_user_registration_path, style: "text-decoration: none; color: #FFF; font-weight: 500; font-size: 20px" %>
+              <%= link_to "Register Now", new_user_registration_path, style: "text-decoration: none; color: #FFF; font-weight: 500; font-size: 20px" %>
             </button>
           </div>
         </div>
@@ -84,29 +84,3 @@
    </div>   
   </div>
 </section>
-
-
-<script>
-  $('#start_date').datepicker({
-    dateFormat: 'mm/dd/yy',
-    minDate: 0, 
-    maxDate: '3m',
-    onSelect: function(selected) {
-      $('#end_date').datepicker("option", "minDate", selected);
-      $('#end_date').attr("disabled", false);
-    }
-  });
-  
-  // $('#end_date').datepicker({
-  //   dateFormat: 'mm/dd/yy',
-  //   minDate: 0, 
-  //   maxDate: '3m',
-  //   onSelect: function(selected) {
-  //     $('#start_date').datepicker("option", "maxDate", selected);
-  //   }
-  // });
-
-  $(function() {
-    $("#autolocation").geocomplete();
-  })
-</script>

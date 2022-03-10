@@ -9,6 +9,10 @@ Rails.application.configure do
       :s3_region => ENV['AWS_REGION']
     }
   }
+  
+  # Store files on Amazon S3.
+  config.active_storage.service = :amazon
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

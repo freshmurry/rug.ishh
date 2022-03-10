@@ -1,6 +1,5 @@
 class Bouncehouse < ApplicationRecord
-  enum instant: {Request: 0, Instant: 1}
-  
+
   belongs_to :user, required: false
   has_many :photos
   has_many :reservations
@@ -12,7 +11,6 @@ class Bouncehouse < ApplicationRecord
   after_validation :geocode, if: :address_changed?
   
   validates :bouncehouse_type, presence: true
-  validates :time_limit, presence: true
 
   def cover_photo(size)
     if self.photos.length > 0

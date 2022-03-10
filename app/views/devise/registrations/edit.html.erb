@@ -11,7 +11,7 @@
               <div class="panel-heading preview">
                 <%= image_tag avatar_url(current_user) %>
               </div>
-                      
+              
               <div class="panel-body">
                 <div class="container">
                   <%= link_to "View My Profile", user_path(current_user.id), class: "btn btn-default" %>&nbsp;
@@ -29,7 +29,7 @@
           <div class="panel-heading">Edit Your Profile</div>
             <div class="panel-body">
               <div class="container">
-                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>	         
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
                 <%= render 'shared/devisemes' %>
     
     
@@ -37,13 +37,13 @@
                   <div class="form-group">	       
                     <span class="btn btn-default btn-file text-babu">	              
                       <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i> Select A Profile Photo	                
-                        <%= f.file_field :image,  type: :file, multiple: true %>	                   
+                        <%= f.file_field :image,  type: :file, multiple: true %>
                     </span></br>    
                   </div>
     
-                  <div class="form-group text-center">
-                    <%= f.submit "Add Profile Photo", class: "btn btn-form" %>
-                  </div>
+                  <!--<div class="form-group text-center">-->
+                  <!--  <= f.submit "Add Profile Photo", class: "btn btn-form" %>-->
+                  <!--</div>-->
     
                   <div class="form-group">
                     <%= f.text_field :fullname, autofocus: true, placeholder: "Full Name", class: "form-control" %>

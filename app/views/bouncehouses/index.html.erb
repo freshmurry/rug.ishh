@@ -6,8 +6,7 @@
           <% if current_user && current_user.id == 1 %>
           <li class="sidebar-item"><%= link_to "Current Listings", bouncehouses_path, class: "sidebar-link active" %></li>
           <% else %>
-          <li class="sidebar-item"><%= link_to "Current Reservations", current_reservations_path, class: "sidebar-link" %></li>
-          <li class="sidebar-item"><%= link_to "Previous Reservations", previous_reservations_path, class: "sidebar-link" %></li>
+          <li class="sidebar-item"><%= link_to "Purchase History", previous_reservations_path, class: "sidebar-link" %></li>
           <% end %>
         </ul>
       </div>

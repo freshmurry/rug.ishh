@@ -19,11 +19,11 @@
         <% if (!user_signed_in?) %>
           <li>
             <% if current_user && current_user.id == 1 %>
-              
-              <% else %>
-            <button class="btn btn-form btn-small">
-              <%= link_to "Book Now", new_user_registration_path, style: "color: white; text-decoration: none;" %>
-            </button>
+              <button class="btn btn-form btn-small">
+                <%= link_to "Create New Product", new_user_registration_path, style: "color: white; text-decoration: none;" %>
+              </button>
+            <% else %>
+            
             <% end %>
           </li>
           <!--<li><= link_to "773-727-5654", style: "text-decoration: none;" %></li>-->
@@ -33,20 +33,20 @@
         <% else %>
           <li>
             <% if current_user && current_user.id == 1 %>
+              <button class="btn btn-form btn-small">
+                <%= link_to "Create New Product", new_user_registration_path, style: "color: white; text-decoration: none;" %>
+              </button>
+            <% else %>  
               
-              <% else %>
-            <button class="btn btn-form btn-small">
-              <%= link_to "Book Now", bouncehouse_path(id: 1), style: "color: white; text-decoration: none;" %>
-            </button>
             <% end %>
           </li>
           <li>
             <%= link_to notifications_path do %>
-              <i class="fa fa-bell fa-2x icon-babu"></i>
-              <span class="badge" id="navbar_num_of_unread"><%= current_user.unread if current_user.unread > 0 %></span>
-            <% end %>
+            <i class="fa fa-bell fa-2x icon-babu"></i>
+            <span class="badge" id="navbar_num_of_unread"><%= current_user.unread if current_user.unread > 0 %></span>
           </li>
-          
+        <% end %>
+
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
               role="button" aria-haspopup="true" aria-expanded="false">
@@ -58,15 +58,13 @@
               <% if current_user && current_user.id != 1 %>
         
               <% else %>
-              <li><%= link_to "Manage Listing", bouncehouses_path %></li>
+                <li><%= link_to "Manage Listing", bouncehouses_path %></li>
               <% end %>
-              <% if current_user && current_user.id == 1 %>
-              
+              <% if current_user && current_user.id != 1 %>
+                <li><%= link_to "Purchases", previous_reservations_path %></li>
               <% else %>
-              <li><%= link_to "Book Now", new_bouncehouse_path %></li>
+              
               <% end %>
-              <li><%= link_to "Previous Reservations", previous_reservations_path %></li>
-              <li><%= link_to "Current Reservations", current_reservations_path %></li>
               <% if current_user && current_user.id == 1 %>
               <li><%= link_to "Create Listing", new_bouncehouse_path %></li>
               <% else %>
@@ -102,12 +100,15 @@
         <% else %>
           <li <% if current_page?(revenues_path) %> class="active" <% end %> ><%= link_to "Revenues", revenues_path %></li>
         <% end %>
-          <li <% if current_page?(current_reservations_path) %> class="active" <% end %> ><%= link_to "Current Reservations", current_reservations_path %></li>
-        
+        <% if current_user && current_user.id != 1 %>
+          <li <% if current_page?(previous_reservations_path) %> class="active" <% end %> ><%= link_to "Purchases", previous_reservations_path %></li>
+        <% else %>
+          
+        <% end %>
         <% if current_user && current_user.id != 1 %>
         
         <% else %>
-          <li <% if current_page?(host_calendar_path) %> class="active" <% end %> ><%= link_to "Host Calendar", host_calendar_path %></li>
+          <li <% if current_page?(host_calendar_path) %> class="active" <% end %> ><%= link_to "Calendar", host_calendar_path %></li>
         <% end %>
         
         <% if current_user && current_user.id != 1 %>

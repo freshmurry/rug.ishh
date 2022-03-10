@@ -13,36 +13,26 @@
                   <div class="container">
                     <div class="row conversation">
                       <% if conversation.messages.any? %>
-                        <div class="col-md-2">
-                          <% if other %>
-                            <%= image_tag (other.image), class: "img-circle avatar-medium" %>
-                          <% end %>  
+                        <div class="col-md-4">
+                            <%= image_tag avatar_url(other), class: "img-circle avatar-small" %>
+                            <b><%= other.fullname %></b>
+                          <%= conversation.messages.last.message_time %>
                         </div>
+                        
                         <div class="col-md-8">
                           <%= conversation.messages.last.context %>
                         </div>
-                        <div class="col-md-1">
-                          <% if other %>
-                            <b><%= other.fullname %></b>
-                          <% end %>  
-                          <%= conversation.messages.last.message_time %>
-                        </div>
-    
-                        <div>
-                          <span class="col-md-1 pull-right">
-                            <%= link_to conversation_path(conversation), remote: true, method: :delete, data: {confirm: "Are you sure?"} do %>
-                              <i class="fas fa-trash-alt fa-md" aria-hidden="true"></i>
-                            <% end %>   
-                          </span>
-                        </div>
                         
+                        <span class="col-md-1 pull-right">
+                          <%= link_to conversation_path(conversation), remote: true, method: :delete, data: {confirm: "Are you sure?"} do %>
+                            <!--<i class="fas fa-trash-alt fa-md" aria-hidden="true"></i>-->
+                          <% end %>   
+                        </span>
                       <% end %>
                     </div>
                   </div>
-                    
                 <% end %>
               <% end %>
-                
             </div>
           </div>
         </div>

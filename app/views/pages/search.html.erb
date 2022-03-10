@@ -1,7 +1,7 @@
 <div id="main">
-  <div id="left">
+  <div id="">
     <!-- SEARCH PANEL -->
-    <div class="row">
+    <div class="">
       <div class="col-md-offset-4 col-md-4">
         <button id="filter" class="btn btn-default" data-toggle="collapse" data-target="#collapsePanel">
           More Filters <i class="fa fa-chevron-down"></i>
@@ -9,13 +9,12 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="">&nbsp
       <div class="container">
         <br/>
         <div class="collapse" id="collapsePanel">
   
           <%= search_form_for @search, url: search_path, remote: true do |f| %>
-  
             <div class="row">
               <div class="col-md-8">
                 <label>Price range:</label>
@@ -31,74 +30,17 @@
               </div>
             </div>
             <hr/>
-  
-            <div class="row">
-              <div class="col-md-6">
-                <%= text_field_tag :start_date, params[:start_date], readonly: true, placeholder: "Start Date", class: "form-control datepicker" %>
-              </div>
-              <div class="col-md-6">
-                <%= text_field_tag :end_date, params[:end_date], readonly: true, placeholder: "End Date", class: "form-control datepicker" %>
-              </div>
-            </div>
-            <hr/>
                 
           <div class="row">
-            <div class="col-md-4">
-              <div class="form-group select">
-                <label>Time Limit</label>
-                  <%= f.select :time_limit_gteq, [["8hrs.", "8hrs."]],
-                   id: "accommodate", prompt: "Select...", class: "form-control" %>
-                </div>
-              </div>
               <div class="col-md-4">
                 <div class="form-group select">
                   <label>Bounce House Type</label>
-                  <%= f.select :bouncehouse_type_gteq, [["Regluar", "Regular"], ["Castle", "Castle"], ["Waterslide","Waterslide"]], id: "bouncehouse_type", prompt: "Select...", class: "form-control" %>
+                  <%= f.select :bouncehouse_type_gteq, [["Regluar", "Regular"], ["Castle", "Castle"], ["Weeding","Wedding"], ["Waterslide","Waterslide"]], id: "bouncehouse_type", prompt: "Select...", class: "form-control" %>
                 </div>
               </div>
             </div>
             <hr/>
-  
-            <!--<div class="row">-->
-            <!--  <div class="panel panel-default">-->
-            <!--    <div class="panel-heading">Amenities</div>-->
-            <!--      <div class="panel-body">-->
-            <!--        <div class="container">-->
-            <!--          <div class="col-md-4">-->
-            <!--            <= check_box_tag "q[is_towels_eq_any]", "true" %> Towels-->
-            <!--          </div>-->
-                      
-            <!--          <div class="col-md-4">-->
-            <!--            <= check_box_tag "q[is_accessible_eq_any]", "true" %> Accessible-->
-            <!--          </div>-->
-            
-          
-            <!--          <div class="col-md-4">-->
-            <!--            <= check_box_tag "q[is_chairs_eq_any]", "true" %> Chairs-->
-            <!--          </div>-->
-                      
-            <!--          <div class="col-md-4">-->
-            <!--            <= check_box_tag "q[is_speaker_eq_any]", "true" %> Portable Speaker-->
-            <!--          </div>-->
-                      
-            <!--          <div class="col-md-4">-->
-            <!--            <= check_box_tag "q[is_parking_eq_any]", "true" %> Non-Permit Street Parking-->
-            <!--          </div>-->
-                      
-            <!--          <div class="col-md-4">-->
-            <!--            <= check_box_tag "q[is_garage_parking_eq_any]", "true" %> Garage Parking-->
-            <!--          </div>-->
-                      
-            <!--          <div class="col-md-4">-->
-            <!--            <= check_box_tag "q[is_heating_eq_any]", "true" %> Heated bouncehouse-->
-            <!--          </div>-->
-            <!--        </div>  -->
-            <!--      </div>-->
-            <!--    </div>-->
-            <!--  </div>-->
-  
-            <hr/>
-  
+
             <div class="row text-center">
               <%= f.submit "Search", class: "btn btn-form" %>
             </div>
@@ -114,68 +56,28 @@
     </div>
   </div>
 
-  <div id="right">
-    <!-- GOOGLE MAP WILL BE HERE -->
 
-    <div id="map" style="width: 100%; height: 100%"></div>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwN_tpAAKnHhy14HzNqK-XeuarVJhNHg8"></script>
-    
-    <script>
-      function initialize(bouncehouses) {
-        var location = {lat: 41.881832, lng: -87.623177}
-        
-        if (bouncehouses.length > 0) {
-          location = {lat: bouncehouses[0].latitude, lng: bouncehouses[0].longitude}
-        }
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: location,
-          zoom: 12
-        });
-
-        var marker, inforwindow;
-
-        bouncehouses.forEach(function(bouncehouse) {
-          marker = new google.maps.Marker({
-            position: {lat: bouncehouse.latitude, lng: bouncehouse.longitude},
-            map: map
-          });
-
-          inforwindow = new google.maps.InfoWindow({
-            content: "<div class='map_price'>$" + bouncehouse.price + "</div>"
-          });
-
-          inforwindow.open(map, marker);
-        })
-      }
-
-      google.maps.event.addDomListener(window, 'load', function() {
-        initialize(<%= raw @arrBouncehouses.to_json %>)
-      });
-    </script>
-  </div>
 </div>
 
 <script>
-  $('#start_date').datepicker({
-    dateFormat: 'mm/dd/yy',
-    minDate: 0,
-    maxDate: '3m',
-    onSelect: function(selected) {
-      $('#end_date').datepicker("option", "minDate", selected);
-      $('#end_date').attr("disabled", false);
-    }
-  });
+  // $('#start_date').datepicker({
+  //   dateFormat: 'mm/dd/yy',
+  //   minDate: 0,
+  //   maxDate: '3m',
+  //   onSelect: function(selected) {
+  //     $('#end_date').datepicker("option", "minDate", selected);
+  //     $('#end_date').attr("disabled", false);
+  //   }
+  // });
 
-  $('#end_date').datepicker({
-    dateFormat: 'mm/dd/yy',
-    minDate: 0, 
-    maxDate: '3m',
-    onSelect: function(selected) {
-      $('#start_date').datepicker("option", "maxDate", selected);
-    }
-  });
+  // $('#end_date').datepicker({
+  //   dateFormat: 'mm/dd/yy',
+  //   minDate: 0, 
+  //   maxDate: '3m',
+  //   onSelect: function(selected) {
+  //     $('#start_date').datepicker("option", "maxDate", selected);
+  //   }
+  // });
 
   var open = true;
 

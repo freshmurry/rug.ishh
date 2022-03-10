@@ -44,9 +44,9 @@
             <div class="col-xs-3 col-sm-3 col-md-3">
               <i class="fas fa-home fa-2x"></i>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-              <i class="fa fa-clock fa-2x"></i>
-            </div>
+            <!--<div class="col-xs-3 col-sm-3 col-md-3">-->
+            <!--  <i class="fa fa-clock fa-2x"></i>-->
+            <!--</div>-->
             <!--<div class="col-xs-3 col-sm-3 col-md-3">-->
             <!--  <i class="fas fa-toilet fa-2x"></i>-->
             <!--</div>-->
@@ -57,7 +57,7 @@
         
           <div class="row text-center">
             <div class="col-xs-3 col-sm-3 col-md-3"><%= @bouncehouse.bouncehouse_type %></div>
-            <div class="col-xs-3 col-sm-3 col-md-3"><%= @bouncehouse.time_limit %></div>
+            <!--<div class="col-xs-3 col-sm-3 col-md-3"><= @bouncehouse. %></div>-->
             <!--<div class="col-xs-3 col-sm-3 col-md-3"><= @bouncehouse. %></div>-->
             <!--<div class="col-xs-3 col-sm-3 col-md-3"><= @bouncehouse. %></div>-->
           </div>
@@ -78,42 +78,7 @@
           </div>
         </div>  
         <br/>
-      
-        <!-- AMENITIES --> 
-        <!--<div class="container">-->
-        <!--  <div class="row">-->
-        <!--    <div class="panel panel-default">-->
-        <!--      <div class="panel-heading">Amenities</div>-->
-        <!--      <div class="panel-body">-->
-        <!--        <div class="container">-->
-        <!--          <div class="col-md-12">-->
-        <!--            <div class="row">-->
-        <!--              <div class="col-xs-4 col-sm-4 col-md-4">-->
-        <!--                <ul class="amenities">-->
-        <!--                  <li class="<= 'text-line-through' if !@bouncehouse.is_towels %>">Towels</li>-->
-        <!--                  <li class="<= 'text-line-through' if !@bouncehouse.is_chairs %>">Chairs</li>-->
-        <!--                  <li class="<= 'text-line-through' if !@bouncehouse.is_accessible %>">Accessible</li>-->
-        <!--                </ul>-->
-        <!--              </div>-->
-        <!--              <div class="col-xs-4 col-sm-4 col-md-4">-->
-        <!--                <ul class="amenities">-->
-        <!--                  <li class="<= 'text-line-through' if !@bouncehouse.is_speaker %>">Portable Speakers</li>-->
-        <!--                  <li class="<= 'text-line-through' if !@bouncehouse.is_parking %>">Non-Permit Street Parking</li>-->
-        <!--                </ul>-->
-        <!--              </div>-->
-        <!--              <div class="col-xs-4 col-sm-4 col-md-4">-->
-        <!--                <ul class="amenities">-->
-        <!--                  <li class="<= 'text-line-through' if !@bouncehouse.is_garage_parking %>">Garage Parking</li>-->
-        <!--                  <li class="<= 'text-line-through' if !@bouncehouse.is_heated_bouncehouse %>">Heated bouncehouse</li>-->
-        <!--                </ul>-->
-        <!--              </div>-->
-        <!--            </div>-->
-        <!--          </div>-->
-        <!--        </div>-->
-        <!--      </div>-->
-        <!--    </div>-->
-        <!--  </div>-->
-        <!--</div>-->
+
         <hr/>
       
         <!-- CAROUSEL -->
@@ -156,7 +121,7 @@
         <div class="container">
           <div class="row">
             <div class="panel panel-default">
-              <div class="panel-heading">Guest Reviews (<%= @guest_reviews.count %>) <span id="average_rating"></span></div>
+              <div class="panel-heading">Reviews (<%= @guest_reviews.count %>) <span id="average_rating"></span></div>
               <div class="container">
                 <div class="panel-body">
                   <div><%= render "reviews/guest_list" %></div>
@@ -165,54 +130,21 @@
             </div>
           </div>
         </div>
-          
-        <!-- GOOGLE MAP -->
-        <div class="container">
-          <div class="row">
-            <div id="map" style="width: 100%; height: 400px"></div>
-            <!-- <script src="https://maps.googleapis.com/maps/api/js"></script> -->
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwN_tpAAKnHhy14HzNqK-XeuarVJhNHg8"></script>
-            <script>
-             function initialize() {
-                var location = {lat: <%= @bouncehouse.latitude %>, lng: <%= @bouncehouse.longitude %>};
-                var map = new google.maps.Map(document.getElementById('map'), {
-                  center: location,
-                  zoom: 12
-                });
-        
-                var marker = new google.maps.Marker({
-                  position: location,
-                  map: map
-                });
-        
-                var infoWindow = new google.maps.InfoWindow({
-                  content: '<div id="content"><%= image_tag @bouncehouse.cover_photo(:medium) %></div>'
-                });
-        
-                infoWindow.open(map, marker);
-              }
-        
-              google.maps.event.addDomListener(window, 'load', initialize);
-            </script>
-        
-          </div>
-        </div>  
-        <hr/>
     
-        <!-- NEARBY BOUNCE HOUSES -->
+        <!-- OTHER BOUNCE HOUSES -->
         <div class="panel panel-default">
-          <div class="panel-heading">Nearby Bounce Houses</div>
+          <div class="panel-heading">What Other Customers Purchased</div>
             <% for bouncehouse in @bouncehouse.nearbys(10) %>
           <div class="col-md-4">
             <div class="panel panel-default">
               <div class="panel-heading preview">
                 <%= image_tag bouncehouse.cover_photo(:medium) %>
+                <div class="price-box-wrapper pull-right">$<%= bouncehouse.price %></div>
               </div>
                   
               <div class="panel-body">
                 <div class="container">
                   <%= link_to bouncehouse.listing_name, bouncehouse %><br/>
-                  (<%= bouncehouse.distance.round(2) %> miles away)
                 </div>
               </div>
             </div>  

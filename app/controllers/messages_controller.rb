@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user! 
-  before_action :set_conversation, only: [:show, :destroy]
+  before_action :set_conversation
 
   def index
     if current_user == @conversation.sender || current_user == @conversation.recipient
@@ -25,19 +25,19 @@ class MessagesController < ApplicationController
     end
   end
 
-  def destroy
-    @message.destroy
-    redirect_to messages_url
-    # @message = Message.find(params[:id])
-    # @conversation = @message.conversation
+  # def destroy
+  #   @message.destroy
+  #   redirect_to messages_url
+  #   @message = Message.find(params[:id])
+  #   @conversation = @message.conversation
 
-    # @message.destroy
-    # @messages = Message.where(conversation_id: @conversation.id)
+  #   @message.destroy
+  #   @messages = Message.where(conversation_id: @conversation.id)
 
-    # respond_to :js
+  #   respond_to :js
 
-    redirect_back(fallback_location: request.referer, notice: "Message Deleted!")
-  end
+  #   redirect_back(fallback_location: request.referer, notice: "Message Deleted!")
+  # end
   
   private
 
