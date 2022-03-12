@@ -1,17 +1,13 @@
 <div id="main">
   <div id="">
     <!-- SEARCH PANEL -->
-    <div class="">
-      <div class="col-md-offset-4 col-md-4">
-        <button id="filter" class="btn btn-default" data-toggle="collapse" data-target="#collapsePanel">
-          More Filters <i class="fa fa-chevron-down"></i>
-        </button>
-      </div>
-    </div>
-
-    <div class="">&nbsp
+    <div class="col-md-offset-2 col-md-8">
       <div class="container">
-        <br/>
+        <div class="row">
+          <div class="col-md-offset-4 col-md-4">
+            <button id="filter" class="btn btn-default" data-toggle="collapse" data-target="#collapsePanel" aria-expanded="true">More filters <i class="fa fa-chevron-up"></i></button>
+          </div>
+        </div>
         <div class="collapse" id="collapsePanel">
   
           <%= search_form_for @search, url: search_path, remote: true do |f| %>
@@ -60,25 +56,6 @@
 </div>
 
 <script>
-  // $('#start_date').datepicker({
-  //   dateFormat: 'mm/dd/yy',
-  //   minDate: 0,
-  //   maxDate: '3m',
-  //   onSelect: function(selected) {
-  //     $('#end_date').datepicker("option", "minDate", selected);
-  //     $('#end_date').attr("disabled", false);
-  //   }
-  // });
-
-  // $('#end_date').datepicker({
-  //   dateFormat: 'mm/dd/yy',
-  //   minDate: 0, 
-  //   maxDate: '3m',
-  //   onSelect: function(selected) {
-  //     $('#start_date').datepicker("option", "maxDate", selected);
-  //   }
-  // });
-
   var open = true;
 
   $('#filter').click(function() {
