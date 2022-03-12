@@ -23,21 +23,6 @@
                  	</div>
               	</div>
     
-                <div class="col-md-4 select">
-                  <div class="form-group">
-                    <label>Time Limit</label>
-                    <%= f.select :time_limit, [["8hrs.", "8hrs."]],
-                                  id: "time_limit", prompt: "Select...", class: "form-control" %>
-                  </div>
-                </div>
-    
-                <div class="col-md-4 select">
-                  <div class="form-group">
-                    <label>Booking Type</label>
-                    <%= f.select :instant, Bouncehouse.instants.map {|key,value| [key.humanize, key]}, selected: 'Instant', prompt: "Select...", class: "form-control" %>
-                  </div>
-                </div>
-    
                 <div class="col-md-12"><%= f.submit "Save", class: "btn btn-normal" %></div>
               <% end %>
             </div>

@@ -78,24 +78,24 @@ class BouncehousesController < ApplicationController
     }
   end
 
-  def preview
-    start_date = Date.parse(params[:start_date])
-    end_date = Date.parse(params[:end_date])
+  # def preview
+  #   start_date = Date.parse(params[:start_date])
+  #   end_date = Date.parse(params[:end_date])
 
-    output = {
-      conflict: is_conflict(start_date, end_date, @bouncehouse)
-    }
+  #   output = {
+  #     conflict: is_conflict(start_date, end_date, @bouncehouse)
+  #   }
 
-    render json: output
-  end
+  #   render json: output
+  # end
   
   private
-    def is_conflict(start_date, end_date, bouncehouse)
-      check = bouncehouse.reservations.where("(? < start_date AND end_date < ?) AND status = ?", start_date, end_date, 1)
-      check_2 = bouncehouse.calendars.where("day BETWEEN ? AND ? AND status = ?", start_date, end_date, 1).limit(1)
+    # def is_conflict(start_date, end_date, bouncehouse)
+    #   check = bouncehouse.reservations.where("(? < start_date AND end_date < ?) AND status = ?", start_date, end_date, 1)
+    #   check_2 = bouncehouse.calendars.where("day BETWEEN ? AND ? AND status = ?", start_date, end_date, 1).limit(1)
       
-      check.size > 0 || check_2.size > 0 ? true : false 
-    end
+    #   check.size > 0 || check_2.size > 0 ? true : false 
+    # end
 
     def set_bouncehouse
       @bouncehouse = Bouncehouse.find(params[:id])
@@ -110,7 +110,6 @@ class BouncehousesController < ApplicationController
     end
 
     def bouncehouse_params
-      params.require(:bouncehouse).permit(:bouncehouse_type, :listing_name, :description, :address, 
-      :price, :active)
+      params.require(:bouncehouse).permit(:bouncehouse_type, :listing_name, :description, :address, :price, :active)
     end
 end

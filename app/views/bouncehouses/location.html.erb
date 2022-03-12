@@ -1,43 +1,43 @@
-<section>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <%= render 'bouncehouse_menu' %>
-      </div>
-      <div class="col-md-9">
-        <div class="panel panel-default">
+<!--<section>-->
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+<!--      <div class="col-md-3">-->
+<!--        <= render 'bouncehouse_menu' %>-->
+<!--      </div>-->
+<!--      <div class="col-md-9">-->
+<!--        <div class="panel panel-default">-->
     
-          <div class="panel-heading">
-            Location
-          </div>
+<!--          <div class="panel-heading">-->
+<!--            Location-->
+<!--          </div>-->
     
-          <div class="panel-body">
-            <div class="container">
-              <%= form_for @bouncehouse do |f| %>
+<!--          <div class="panel-body">-->
+<!--            <div class="container">-->
+<!--              <= form_for @bouncehouse do |f| %>-->
     
-                <div class="row">
-                  <div class="form-group">
-                    <label>Address</label>
-                    <%= f.text_field :address, placeholder: "Location", class: "form-control", required: true, id: "autoaddress" %>
-                  </div>
-                </div>
+<!--                <div class="row">-->
+<!--                  <div class="form-group">-->
+<!--                    <label>Address</label>-->
+<!--                    <= f.text_field :address, placeholder: "Location", class: "form-control", required: true, id: "autoaddress" %>-->
+<!--                  </div>-->
+<!--                </div>-->
     
-                <div class="text-center">
-                  <%= f.submit "Save", class: "btn btn-form" %>
-                </div>
+<!--                <div class="text-center">-->
+<!--                  <= f.submit "Save", class: "btn btn-form" %>-->
+<!--                </div>-->
     
-              <% end %>
-            </div>
-          </div>
+<!--              < end %>-->
+<!--            </div>-->
+<!--          </div>-->
     
-        </div>
-      </div>
-    </div>
-  </div>
-</section>  
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>  -->
 
-<script>
-  $(function() {
-    $("#autoaddress").geocomplete();
-  })
-</script>
+<!--<script>-->
+<!--  $(function() {-->
+<!--    $("#autoaddress").geocomplete();-->
+<!--  })-->
+<!--</script>-->

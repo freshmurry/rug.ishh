@@ -21,10 +21,6 @@
             </div>&nbsp;
     
             <div class="col-md-3 text-center">
-              <!--<= image_tag avatar_url(@bouncehouse.user), class: "img-circle avatar-large" %><br/>-->
-              <!--<= link_to user_path(@bouncehouse.user) do %>-->
-              <!--<= @bouncehouse.user.fullname %>-->
-              <!--< end %>-->
               <div>
                 <span id="average_rating"></span>
               </div>
@@ -76,11 +72,8 @@
               </div>
             </div>
           </div>
-        </div>  
-        <br/>
+        </div>
 
-        <hr/>
-      
         <!-- CAROUSEL -->
         <div class="container">
           <div class="row">  
@@ -132,24 +125,28 @@
         </div>
     
         <!-- OTHER BOUNCE HOUSES -->
-        <div class="panel panel-default">
-          <div class="panel-heading">What Other Customers Purchased</div>
-            <% for bouncehouse in @bouncehouse.nearbys(10) %>
-          <div class="col-md-4">
+        <div class="container">
+          <div class="row">
             <div class="panel panel-default">
-              <div class="panel-heading preview">
-                <%= image_tag bouncehouse.cover_photo(:medium) %>
-                <div class="price-box-wrapper pull-right">$<%= bouncehouse.price %></div>
+              <div class="panel-heading">What Other Customers Purchased</div>
+                <% for bouncehouse in @bouncehouse.nearbys(10) %>
+              <div class="col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading preview">
+                    <%= image_tag bouncehouse.cover_photo(:medium) %>
+                    <div class="price-box-wrapper pull-right">$<%= bouncehouse.price %></div>
+                  </div>
+                      
+                  <div class="panel-body">
+                    <div class="container">
+                      <%= link_to bouncehouse.listing_name, bouncehouse %><br/>
+                    </div>
+                  </div>
+                </div>  
               </div>
-                  
-              <div class="panel-body">
-                <div class="container">
-                  <%= link_to bouncehouse.listing_name, bouncehouse %><br/>
-                </div>
-              </div>
-            </div>  
+              <% end %>  
+            </div>
           </div>
-          <% end %>  
         </div>  
       </div>
     

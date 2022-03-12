@@ -1,16 +1,14 @@
 module ApplicationHelper
-  def avatar_url(user)
+  def image(user)
     if user.image
       "https://graph.facebook.com/#{user.uid}/picture?type=large"
-    else
+    elsif
       gravatar_id = Digest::MD5::hexdigest(user.email).downcase
       "https://www.gravatar.com/avatar/#{gravatar_id}.jpg?d=identical&s=150"
+    else
+      return user.image
     end
   end
-  
-  def image_url(user)
-    
-  end  
   
   def stripe_express_path
   # ----- TEST -----
