@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024222621) do
+ActiveRecord::Schema.define(version: 20220312182658) do
 
   create_table "bouncehouses", force: :cascade do |t|
     t.string   "bouncehouse_type"
@@ -24,8 +24,15 @@ ActiveRecord::Schema.define(version: 20171024222621) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "user_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.string   "size"
+    t.string   "shiptime"
+    t.boolean  "is_blower"
+    t.boolean  "is_repairkit"
+    t.boolean  "is_transportbag"
+    t.boolean  "is_instructionalvideo"
+    t.boolean  "is_freeshipping"
     t.index ["user_id"], name: "index_bouncehouses_on_user_id"
   end
 

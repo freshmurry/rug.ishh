@@ -1,58 +1,45 @@
-<div class="row">
-  <div class="col-md-3">
-    <%= render 'bouncehouse_menu' %>
-  </div>
-  <div class="col-md-9">
-    <div class="panel panel-default">
-
-      <div class="panel-heading">
-        Amenities
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <%= render 'bouncehouse_menu' %>
       </div>
-
-      <div class="panel-body">
-        <div class="container">
+      <div class="col-md-9">
+        <div class="panel panel-default">
+    
+          <div class="panel-heading">
+            Amenities
+          </div>
+          
           <%= form_for @bouncehouse do |f| %>
-
-              <!--<div class="row form-group">-->
-              <!--  <div class="col-md-4">-->
-              <!--    <= f.check_box :is_heated_bouncehouse %> Heated bouncehouse-->
-              <!--  </div>-->
-              <!--  <div class="col-md-4">-->
-              <!--    <= f.check_box :is_chairs %> Chairs-->
-              <!--  </div>-->
-              <!--  <div class="col-md-4">-->
-              <!--    <= f.check_box :is_accessible %> Accessible-->
-              <!--  </div>-->
-              <!--</div>-->
-
-              <!--<div class="row form-group">-->
-              <!--  <div class="col-md-4">-->
-              <!--    <= f.check_box :is_parking %> Parking-->
-              <!--  </div>-->
-              <!--  <div class="col-md-4">-->
-              <!--    <= f.check_box :is_speaker %> Portable Speaker-->
-              <!--  </div>-->
-              <!--  <div class="col-md-4">-->
-              <!--    <= f.check_box :is_garage_parking %> Garage Parking-->
-              <!--  </div>-->
-              <!--</div>-->
-              
-              <!--<div class="row form-group">-->
-              <!--  <div class="col-md-4">-->
-              <!--    <= f.check_box :is_towels %> Towels-->
-              <!--  </div>-->
-              <!--</div>-->
-              
-              <br/><br/>
-
-              <div class="text-center">
-                <%= f.submit "Save", class: "btn btn-form" %>
+            <div class="panel-body">
+              <div class="container">
+        
+                <div class="form-group">
+                  <div class="col-md-4">
+                    <%= f.check_box :is_blower %> Blower
+                  </div>
+                  <div class="col-md-4">
+                    <%= f.check_box :is_repairkit %> Repair Kit
+                  </div>
+                  <div class="col-md-4">
+                    <%= f.check_box :is_transportbag %> Transport Bag
+                  </div>
+                  <div class="col-md-4">
+                    <%= f.check_box :is_instructionalvideo %> Instrctional Video
+                  </div>
+                  <div class="col-md-4">
+                    <%= f.check_box :is_freeshipping %> Free Shipping
+                  </div>
+                </div>
               </div>
-
+            </div>
+            <div class="text-center">
+              <%= f.submit "Save", class: "btn btn-form" %>
+            </div>
           <% end %>
         </div>
       </div>
-
     </div>
-  </div>
-</div>
+  </div>  
+</section>

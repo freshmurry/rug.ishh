@@ -1,7 +1,7 @@
 class BouncehousesController < ApplicationController
   before_action :set_bouncehouse, except: [:index, :new, :create]
   before_action :authenticate_user!, except: [:show, :preload, :preview]
-  before_action :is_authorized, only: [:listing, :pricing, :description, :photo_upload, :location, :update]
+  before_action :is_authorized, only: [:listing, :pricing, :description, :photo_upload, :amenities, :location, :update]
   
   def index
     @bouncehouses = current_user.bouncehouses
@@ -110,6 +110,6 @@ class BouncehousesController < ApplicationController
     end
 
     def bouncehouse_params
-      params.require(:bouncehouse).permit(:bouncehouse_type, :listing_name, :description, :address, :price, :active)
+      params.require(:bouncehouse).permit(:bouncehouse_type, :size, :shiptime, :listing_name, :description, :is_blower, :is_repairkit, :is_transportbag, :is_instructionalvideo, :is_freeshipping, :address, :price, :active)
     end
 end

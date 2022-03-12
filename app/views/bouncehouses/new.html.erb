@@ -17,6 +17,22 @@
                       id: "bouncehouse_type", prompt: "Select...", class: "form-control" %>
                   </div>
                 </div>
+                
+                <div class="col-md-4 select">
+                  <div class="form-group">
+                    <label>Bounce House Size</label>
+                    <%= f.select :size, [["10'x10'x10'", "10'x10'x10'"], ["12'x12'x12'", "12'x12'x12'"], ["13'x13'x13'", "13'x13'x13'"]],
+                      id: "size", prompt: "Select...", class: "form-control" %>
+                  </div>
+                </div>
+                
+                <div class="col-md-4 select">
+                  <div class="form-group">
+                    <label>Bounce House Ship Time</label>
+                    <%= f.select :shiptime, [["45 Days", "45 Days"], ["50 Days", "50 Days"], ["60 Days", "60 Days"]],
+                      id: "shiptime", prompt: "Select...", class: "form-control" %>
+                  </div>
+                </div>
 
                 <div class="col-md-12 text-center">
                   <div><%= f.submit "Create Listing", class: "btn btn-normal" %> 
