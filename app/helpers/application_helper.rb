@@ -10,6 +10,15 @@ module ApplicationHelper
     end
   end
   
+  def avatar_url(user)
+    if user.image
+      "https://graph.facebook.com/#{user.uid}/picture?type=large"
+    else
+      gravatar_id = Digest::MD5::hexdigest(user.email).downcase
+      "https://www.gravatar.com/avatar/#{gravatar_id}.jpg?d=identicon&s=150"
+    end
+  end
+  
   def stripe_express_path
   # ----- TEST -----
   "https://connect.stripe.com/express/oauth/authorize?redirect_uri=https://connect.stripe.com/connect/default/oauth/test&client_id=ca_JTqdRf8V2CW9ExyXQpkHrheJYb8ZXUyP&state={STATE_VALUE}"
