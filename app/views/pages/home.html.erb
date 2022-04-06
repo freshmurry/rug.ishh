@@ -1,12 +1,12 @@
-<header class="page-header bg-img-cover overlay overlay-primary overlay-90 page-header-dark" style="background-image: url('https://www.canyonpartyrental.com/wp-content/uploads/2019/06/IMG_1244.jpg');">
-  <div class="page-header-content py-5">
+<header class="">
+  <div class="">
     <div class="container">
       <div class="row">
-        <div class="col-md-7 banner">
-          <h1><span class="text-red">Unique Personalized</span> Rugs.</h1>
+        <div class="col-md-12">
+          <h1><span class="text-blue">Unique Personalized Rugs.</h1>
           
           <div class="">
-			    	<div class="col-md-6">
+			    	<div class="col-md-3">
 			        <%= form_tag search_path, method: :get do %>
 			        
 			        <%= text_field_tag :search, params[:search], placeholder: "Search Rugs", class: "form-control", id: "autolocation" %>
@@ -84,3 +84,28 @@
    </div>   
   </div>
 </section>
+
+<script>
+  $('#start_date').datepicker({
+    dateFormat: 'mm/dd/yy',
+    minDate: 0, 
+    maxDate: '12m',
+    onSelect: function(selected) {
+      $('#end_date').datepicker("option", "minDate", selected);
+      $('#end_date').attr("disabled", false);
+    }
+  });
+  
+  // $('#end_date').datepicker({
+  //   dateFormat: 'mm/dd/yy',
+  //   minDate: 0, 
+  //   maxDate: '3m',
+  //   onSelect: function(selected) {
+  //     $('#start_date').datepicker("option", "maxDate", selected);
+  //   }
+  // });
+
+  $(function() {
+    $("#autolocation").geocomplete();
+  })
+</script>

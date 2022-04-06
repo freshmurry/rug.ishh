@@ -110,6 +110,6 @@ class RugsController < ApplicationController
     end
 
     def rug_params
-      params.require(:rug).permit(:rug_type, :amenities, :size, :shiptime, :listing_name, :description, :is_freeshipping, :address, :price, :active)
+      params.require(:rug).permit(:rug_type, :listing_name, :description,  :is_freeshipping, :address, :price, :active)
     end
 end

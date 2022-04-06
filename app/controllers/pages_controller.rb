@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @rugs = Rug.where(active: true).limit(3)
+    @bouncehouses = Rug.where(active: true).limit(18)
   end
 
   def search
@@ -11,16 +11,16 @@ class PagesController < ApplicationController
 
     # STEP 2
     if session[:loc_search] && session[:loc_search] != ""
-      @rugs_address = Rug.where(active: true).near(session[:loc_search], 5, order: 'distance')
+      @bouncehouses_address = Rug.where(active: true).near(session[:loc_search], 5, order: 'distance')
     else
-      @rugs_address = Rug.where(active: true).all
+      @bouncehouses_address = Rug.where(active: true).all
     end
 
     # STEP 3
-    @search = @rugs_address.ransack(params[:q])
-    @rugs = @search.result
+    @search = @bouncehouses_address.ransack(params[:q])
+    @bouncehouses = @search.result
 
-    @arrRugs = @rugs.to_a
+    @arrRugs = @bouncehouses.to_a
 
     # STEP 4
     if (params[:start_date] && params[:end_date] && !params[:start_date].empty? &&  !params[:end_date].empty?)
@@ -28,9 +28,9 @@ class PagesController < ApplicationController
       start_date = Date.parse(params[:start_date])
       end_date = Date.parse(params[:end_date])
 
-      @rugs.each do |rug|
+      @bouncehouses.each do |bouncehouse|
 
-        not_available = rug.reservations.where(
+        not_available = bouncehouse.reservations.where(
           "((? <= start_date AND start_date <= ?)
           OR (? <= end_date AND end_date <= ?)
           OR (start_date < ? AND ? < end_date))
@@ -42,12 +42,12 @@ class PagesController < ApplicationController
         ).limit(1)
         
         not_available_in_calendar = Calendar.where(
-          "rug_id = ? AND status = ? AND day <= ? AND day >= ?",
-          rug.id, 1, end_date, start_date
+          "bouncehouse_id = ? AND status = ? AND day <= ? AND day >= ?",
+          bouncehouse.id, 1, end_date, start_date
         ).limit(1)
         
         if not_available.length > 0 || not_available_in_calendar.length > 0
-          @arrRugs.delete(rug)
+          @arrRugs.delete(bouncehouse)
         end
       end
     end
