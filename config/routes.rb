@@ -14,7 +14,7 @@ Rails.application.routes.draw do
      end
    end
 
-   resources :bouncehouses do		
+   resources :rugs do		
     member do		
       get 'listing'
       get 'pricing'

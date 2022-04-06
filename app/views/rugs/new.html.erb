@@ -9,27 +9,27 @@
           <div class="panel-body">
             <div class="container">
     
-              <%= form_for @bouncehouse do |f| %>
+              <%= form_for @rug do |f| %>
                 <div class="col-md-4 select">
                   <div class="form-group">
-                    <label>Bounce House Type</label>
-                    <%= f.select :bouncehouse_type, [["Regular", "Regular"], ["Waterslide", "Waterslide"], ["Castle", "Castle"]],
-                      id: "bouncehouse_type", prompt: "Select...", class: "form-control" %>
+                    <label>Rug Type</label>
+                    <%= f.select :rug_type, [["Small", "Small"], ["Medium", "Medium"], ["Large", "Large"], ["Extra Large", "Extra Large"]],
+                      id: "rug_type", prompt: "Select...", class: "form-control" %>
                   </div>
                 </div>
                 
                 <div class="col-md-4 select">
                   <div class="form-group">
-                    <label>Bounce House Size</label>
-                    <%= f.select :size, [["10'x10'x10'", "10'x10'x10'"], ["12'x12'x12'", "12'x12'x12'"], ["13'x13'x13'", "13'x13'x13'"]],
+                    <label>Rug Size</label>
+                    <%= f.select :size, [["10x10", "10x10"], ["12x12", "12x12"], ["13x13", "13x13"]],
                       id: "size", prompt: "Select...", class: "form-control" %>
                   </div>
                 </div>
                 
                 <div class="col-md-4 select">
                   <div class="form-group">
-                    <label>Bounce House Ship Time</label>
-                    <%= f.select :shiptime, [["45 Days", "45 Days"], ["50 Days", "50 Days"], ["60 Days", "60 Days"]],
+                    <label>Ship Time</label>
+                    <%= f.select :shiptime, [["5 Days", "5 Days"], ["10 Days", "10 Days"], ["15 Days", "15 Days"]],
                       id: "shiptime", prompt: "Select...", class: "form-control" %>
                   </div>
                 </div>

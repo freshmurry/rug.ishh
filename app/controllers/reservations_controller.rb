@@ -3,11 +3,11 @@ class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:approve, :decline]
 
   def create
-    bouncehouse = Bouncehouse.find(params[:bouncehouse_id])
+    rug = Rug.find(params[:rug_id])
 
-    if current_user == bouncehouse.user
-      flash[:alert] = "You cannot book your own Bouncehouse!"
-    elsif current_user.stripe_id.blank?
+    # if current_user == rug.user
+    #   flash[:alert] = "You cannot book your own Rug!"
+    if current_user.stripe_id.blank?
        flash[:alert] = "Please update your payment method!"
        return redirect_to payment_method_path
     else
@@ -15,34 +15,34 @@ class ReservationsController < ApplicationController
       end_date = Date.parse(reservation_params[:end_date])
       days = (end_date - start_date).to_i + 1
 
-      special_dates = bouncehouse.calendars.where(
+      special_dates = rug.calendars.where(
         "status = ? AND day BETWEEN ? AND ? AND price <> ?",
-        0, start_date, end_date, bouncehouse.price
+        0, start_date, end_date, rug.price
       )
       
       @reservation = current_user.reservations.build(reservation_params)
-      @reservation.bouncehouse = bouncehouse
-      @reservation.price = bouncehouse.price
-      # @reservation.total = bouncehouse.price * days
+      @reservation.rug = rug
+      @reservation.price = rug.price
+      # @reservation.total = rug.price * days
       # @reservation.save
       
-      @reservation.total = bouncehouse.price * (days - special_dates.count)
+      @reservation.total = rug.price * (days - special_dates.count)
       special_dates.each do |date|
           @reservation.total += date.price
       end
       
       if @reservation.Waiting!
-        if bouncehouse.Request?
+        if rug.Request?
           flash[:notice] = "Request sent successfully"
         else
-          charge(bouncehouse, @reservation)
+          charge(rug, @reservation)
         end
       else
         flash[:alert] = "Cannot make a reservation"
       end
       
     end
-    redirect_to bouncehouse
+    redirect_to rug
   end
 
   def previous_reservations
@@ -50,11 +50,11 @@ class ReservationsController < ApplicationController
   end
 
   def current_reservations
-    @bouncehouses = current_user.bouncehouses
+    @rugs = current_user.rugs
   end
   
   def approve
-    charge(@reservation.bouncehouse, @reservation)
+    charge(@reservation.rug, @reservation)
     redirect_to current_reservations_path
   end
 
@@ -65,33 +65,33 @@ class ReservationsController < ApplicationController
 
   private
   
-  def send_sms(bouncehouse, reservation)
+  def send_sms(rug, reservation)
     @client = Twilio::REST::Client.new
     @client.messages.create(
       from: '+3125488878',
-      to: bouncehouse.user.phone_number,
-      body: "#{reservation.user.fullname} booked your '#{bouncehouse.listing_name}'"
+      to: rug.user.phone_number,
+      body: "#{reservation.user.fullname} booked your '#{rug.listing_name}'"
     )
   end
   
-    def charge(bouncehouse, reservation)
+    def charge(rug, reservation)
       if !reservation.user.stripe_id.blank?
         customer = Stripe::Customer.retrieve(reservation.user.stripe_id)
         charge = Stripe::Charge.create(
           :customer => customer.id,
           :amount => reservation.total * 100,
-          :description => bouncehouse.listing_name,
+          :description => rug.listing_name,
           :currency => "usd", 
           :destination => {
             :amount => reservation.total * 80, # 80% of the total amount goes to the Host, 20% is company fee
-            :account => bouncehouse.user.merchant_id # bouncehouse's Stripe customer ID
+            :account => rug.user.merchant_id # rug's Stripe customer ID
           }
         )
   
         if charge
           reservation.Approved!
-          ReservationMailer.send_email_to_guest(reservation.user, bouncehouse).deliver_later if reservation.user.setting.enable_email
-          send_sms(bouncehouse, reservation) if bouncehouse.user.setting.enable_sms
+          ReservationMailer.send_email_to_guest(reservation.user, rug).deliver_later if reservation.user.setting.enable_email
+          send_sms(rug, reservation) if rug.user.setting.enable_sms
           flash[:notice] = "Reservation created successfully!"
         else
           reservation.Declined!

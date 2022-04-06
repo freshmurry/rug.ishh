@@ -1,16 +1,16 @@
 class GuestReviewsController < ApplicationController
 
   def create
-    # Step 1: Check if the reservation exist (bouncehouse_id, host_id, host_id)
+    # Step 1: Check if the reservation exist (rug_id, host_id, host_id)
 
     # Step 2: Check if the current host already reviewed the guest in this reservation.
 
     @reservation = Reservation.where(
                     id: guest_review_params[:reservation_id],
-                    bouncehouse_id: guest_review_params[:bouncehouse_id]
+                    rug_id: guest_review_params[:rug_id]
                    ).first
 
-    if !@reservation.nil? && @reservation.bouncehouse.user.id == guest_review_params[:host_id].to_i
+    if !@reservation.nil? && @reservation.rug.user.id == guest_review_params[:host_id].to_i
 
       @has_reviewed = GuestReview.where(
                         reservation_id: @reservation.id,
@@ -41,6 +41,6 @@ class GuestReviewsController < ApplicationController
 
   private
     def guest_review_params
-      params.require(:guest_review).permit(:comment, :star, :bouncehouse_id, :reservation_id, :host_id)
+      params.require(:guest_review).permit(:comment, :star, :rug_id, :reservation_id, :host_id)
     end
 end

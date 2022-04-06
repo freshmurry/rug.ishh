@@ -15,9 +15,9 @@ class MessagesController < ApplicationController
     @message = @conversation.messages.new(message_params)
     @messages = @conversation.messages.order("created_at DESC")
 
-    if current_user == bouncehouse.user
+    if current_user == rug.user
       flash[:alert] = "You cannot send a message to yourself!"
-      redirect_to bouncehouse
+      redirect_to rug
     end
       
     if @message.save

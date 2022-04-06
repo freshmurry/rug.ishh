@@ -4,10 +4,10 @@
       <div class="col-md-3">
         <ul class="sidebar-list">
           <% if current_user && current_user.id == 1 %>
-          <li class="sidebar-item"><%= link_to "Current Listings", bouncehouses_path, class: "sidebar-link" %></li>
+          <li class="sidebar-item"><%= link_to "Current Listings", rugs_path, class: "sidebar-link" %></li>
           <% else %>
-          <li class="sidebar-item"><%= link_to "Current Reservations", current_reservations_path, class: "sidebar-link active" %></li>
-          <li class="sidebar-item"><%= link_to "Previous Reservations", previous_reservations_path, class: "sidebar-link" %></li>
+          <li class="sidebar-item"><%= link_to "Current Purchase", current_reservations_path, class: "sidebar-link active" %></li>
+          <li class="sidebar-item"><%= link_to "Previous Purchases", previous_reservations_path, class: "sidebar-link" %></li>
           <% end %>
         </ul>
       </div>
@@ -18,8 +18,8 @@
           </div>
           <div class="panel-body">
             <div class="container">
-              <% @bouncehouses.each do |bouncehouse| %>
-                  <% bouncehouse.reservations.each do |reservation| %>
+              <% @rugs.each do |rug| %>
+                  <% rug.reservations.each do |reservation| %>
                       <div class="row">
                         <div class="container">
                           <div class="col-md-3">
@@ -45,9 +45,9 @@
                           </div>
                           
                           <div class="col-md-4">
-                            <%= link_to bouncehouse_path(reservation.bouncehouse) do %>
-                                <%= image_tag reservation.bouncehouse.cover_photo(:medium) %>
-                                <%= link_to reservation.bouncehouse.listing_name, bouncehouse_path(reservation.bouncehouse) %>
+                            <%= link_to rug_path(reservation.rug) do %>
+                                <%= image_tag reservation.rug.cover_photo(:medium) %>
+                                <%= link_to reservation.rug.listing_name, rug_path(reservation.rug) %>
                             <% end %>
                           </div>
                         </div>

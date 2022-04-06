@@ -8,7 +8,7 @@ class User < ApplicationRecord
   
   has_attached_file :avatar
 
-  has_many :bouncehouses
+  has_many :rugs
   has_many :reservations
   
   has_many :guest_reviews, class_name: "GuestReview", foreign_key: "guest_id"

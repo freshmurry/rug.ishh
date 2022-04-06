@@ -3,13 +3,13 @@
     <div class="container">
       <div class="row">
         <div class="col-md-7 banner">
-          <h1><span class="text-red">Start Your Bounce House Rental Business</span> Simple and Easy.</h1>
+          <h1><span class="text-red">Unique Personalized</span> Rugs.</h1>
           
           <div class="">
 			    	<div class="col-md-6">
 			        <%= form_tag search_path, method: :get do %>
 			        
-			        <%= text_field_tag :search, params[:search], placeholder: "Search Bounce Houses", class: "form-control", id: "autolocation" %>
+			        <%= text_field_tag :search, params[:search], placeholder: "Search Rugs", class: "form-control", id: "autolocation" %>
 			      </div>&nbsp;
 			        
 			      <div class="col-md-2">
@@ -29,21 +29,21 @@
 
 <br>
 
-<!-- BOUNCE HOUSES -->
-<div class="text-center"><h2>Browse Our Bounce Houses</h2>
-  <p>Browse our assortment of bounce houses</p>
+<!-- RUGS -->
+<div class="text-center"><h2>Browse Our Rugs</h2>
+  <p>Browse our Assortment of Rugs</p>
 </div>
 <br/>
 
 <section class="">
   <div class="container">
     <div class="row">
-      <%= render partial: "bouncehouses/bouncehouses_list", locals: {bouncehouses: @bouncehouses} %>
+      <%= render partial: "rugs/rugs_list", locals: {rugs: @rugs} %>
     </div>
   </div>
 </section>  
 
-<!--<h2 class="col-md-12 banner"><span class="text-blue">Why use</span> bouncehouseCrasher</h2>-->
+<!--<h2 class="col-md-12 banner"><span class="text-blue">Why use</span> rugCrasher</h2>-->
 
 <!-- HOW It WORKS -->
 <section class="">
@@ -56,20 +56,20 @@
         
       <div class="row text-center">
         <div class="col-md-4">
-        <div class="fas fa-home fa-4x text-blue"></div>
+        <div class="fas fa-search fa-4x text-blue"></div>
           <h3 class="my-3">Register and Look Around</h3>
-          <p class="text-center">Explore our various assortment of bounce houses.</p>
+          <p class="text-center">Explore our various assortment of rugs.</p>
         </div>
                           
         <div class="col-md-4">
         <div class="fas fa-envelope fa-4x text-blue"></div>
           <h3>Send Us a Message</h3>
-          <p class="text-center">Send us a message and we will respond to you in a timely manner.</p>
+          <p class="text-center">Send us a message about your design and we will respond to you in a timely manner.</p>
         </div>
                           
         <div class="col-md-4">
         <div class="fas fa-credit-card fa-4x text-blue"></div>
-         	<h3>Purchase Your Bounce House</h3>
+         	<h3>Purchase Your Unique Rug</h3>
          	<p class="text-center">Using our secure online checkout, custermers will be able to pay using any major credit or debit card.</p>
         </div>
         

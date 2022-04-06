@@ -11,7 +11,7 @@
           <div class="panel-body">
             <div class="container">  
               <span class="pull-right">
-                <%= link_to bouncehouse_photo_path(photo.bouncehouse_id, photo), remote: true, method: :delete, data: {confirm: "Are you sure?"} do %>
+                <%= link_to rug_photo_path(photo.rug_id, photo), remote: true, method: :delete, data: {confirm: "Are you sure?"} do %>
                   <i class="fa fa-trash" aria-hidden="true"></i>
                 <% end %>
               </span>

@@ -4,7 +4,7 @@
       <div class="col-md-3">
         <ul class="sidebar-list">
           <% if current_user && current_user.id == 1 %>
-          <li class="sidebar-item"><%= link_to "Current Listings", bouncehouses_path, class: "sidebar-link" %></li>
+          <li class="sidebar-item"><%= link_to "Current Listings", rugs_path, class: "sidebar-link" %></li>
           <% else %>
           <li class="sidebar-item"><%= link_to "Purchases", previous_reservations_path, class: "sidebar-link active" %></li>
           <% end %>
@@ -26,17 +26,17 @@
                   </div>
                   <div class="col-md-2">
                     <div class="panel-heading-preview">
-                      <%= link_to bouncehouse_path(space.bouncehouse) do %>
-                        <%= image_tag space.bouncehouse.cover_photo(:thumb) %>
+                      <%= link_to rug_path(space.rug) do %>
+                        <%= image_tag space.rug.cover_photo(:thumb) %>
                       <% end %>
                     </div>  
                   </div>
                   <div class="col-md-5">
-                    <%= link_to space.bouncehouse.listing_name, bouncehouse_path(space.bouncehouse) %><br/>
+                    <%= link_to space.rug.listing_name, rug_path(space.rug) %><br/>
                     <span>
-                      <%= image_tag (space.bouncehouse.user.image), class: "img-circle avatar-small" %>
-                      <%= link_to user_path(space.bouncehouse.user) do %>
-                      <%= space.bouncehouse.user.fullname %>
+                      <%= image_tag (space.rug.user.image), class: "img-circle avatar-small" %>
+                      <%= link_to user_path(space.rug.user) do %>
+                      <%= space.rug.user.fullname %>
                       <% end %>
                     </span>
                   </div>

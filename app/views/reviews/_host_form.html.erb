@@ -22,7 +22,7 @@
               <%= f.text_area :comment, rows: 3, class: "form-control" %>
             </div>
 
-            <%= f.hidden_field :bouncehouse_id, value: reservation.bouncehouse.id %>
+            <%= f.hidden_field :rug_id, value: reservation.rug.id %>
             <%= f.hidden_field :reservation_id, value: reservation.id %>
             <%= f.hidden_field :guest_id, value: reservation.user.id %>
 

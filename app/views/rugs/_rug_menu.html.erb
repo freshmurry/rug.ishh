@@ -1,47 +1,47 @@
 <ul class="sidebar-list">
   <li class="sidebar-item">
-    <%= link_to "Listing", listing_bouncehouse_path, class: "sidebar-link active" %>
+    <%= link_to "Listing", listing_rug_path, class: "sidebar-link active" %>
     <span class="pull-right text-babu"><i class="fa fa-check-circle"></i></span>
   </li>
   
   <li class="sidebar-item">
-    <%= link_to "Pricing", pricing_bouncehouse_path, class: "sidebar-link active" %>
-    <% if !@bouncehouse.price.blank? %>
+    <%= link_to "Pricing", pricing_rug_path, class: "sidebar-link active" %>
+    <% if !@rug.price.blank? %>
       <span class="pull-right text-babu"><i class="fa fa-check-circle"></i></span>
     <% end %>
   </li>
   
   <li class="sidebar-item">
-    <%= link_to "Description", description_bouncehouse_path, class: "sidebar-link active" %>
-    <% if !@bouncehouse.listing_name.blank? %>
+    <%= link_to "Description", description_rug_path, class: "sidebar-link active" %>
+    <% if !@rug.listing_name.blank? %>
       <span class="pull-right text-babu"><i class="fa fa-check-circle"></i></span>
     <% end %>
   </li>
   
   <li class="sidebar-item">
-    <%= link_to "Photos", photo_upload_bouncehouse_path, class: "sidebar-link active" %>
-    <% if !@bouncehouse.photos.blank? %>
+    <%= link_to "Photos", photo_upload_rug_path, class: "sidebar-link active" %>
+    <% if !@rug.photos.blank? %>
       <span id="photo_check" class="pull-right text-babu"><i class="fa fa-check-circle"></i></span>
     <% end %>
   </li>
   
   <li class="sidebar-item">
-    <%= link_to "Amenities", amenities_bouncehouse_path, class: "sidebar-link active" %>
+    <%= link_to "Amenities", amenities_rug_path, class: "sidebar-link active" %>
     <span class="pull-right text-babu"><i class="fa fa-check-circle"></i></span>
   </li>
   
   <li class="sidebar-item">
-    <%= link_to "Location Address", location_bouncehouse_path, class: "sidebar-link active" %>
-    <% if !@bouncehouse.address.blank? %>
+    <%= link_to "Location Address", location_rug_path, class: "sidebar-link active" %>
+    <% if !@rug.address.blank? %>
       <span class="pull-right text-babu"><i class="fa fa-check-circle"></i></span>
     <% end %>
   </li>
 </ul>
 <hr/>
 
-<% is_ready = !@bouncehouse.active && !@bouncehouse.price.blank? && !@bouncehouse.listing_name.blank? && !@bouncehouse.photos.blank? && !@bouncehouse.address.blank? %>
+<% is_ready = !@rug.active && !@rug.price.blank? && !@rug.listing_name.blank? && !@rug.photos.blank? && !@rug.address.blank? %>
 
-<%= form_for @bouncehouse do |f| %>
+<%= form_for @rug do |f| %>
   <%= f.hidden_field :active, value: true %>
   <%= f.submit "Publish", id: "publish_button", class: "btn btn-normal btn-block", disabled: !is_ready %>
 <% end %>

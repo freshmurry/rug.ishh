@@ -1,0 +1,26 @@
+<% rugs.each do |rug| %>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading preview">
+        <%= link_to image_tag(rug.cover_photo(:medium)) %>
+        <div class="price-box-wrapper pull-right">$<%= rug.price %></div>
+      </div>
+      <div class="panel-body">
+        <div class="container">
+          <span class="" style="padding-left: 0px; padding-right: 0px;"><%= link_to rug.listing_name, rug %></span></br>
+          <span class="" style="padding-left: 0px; padding-right: 0px;"><span id="star_<%= rug.id %>"></span>&nbsp;<%= pluralize(rug.guest_reviews.count, "review") %>
+          <!--<span class="pull-right" style="border: 1px solid black; padding: 5px;"><b>$<= rug.price %></b></span>-->
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <script>
+    $('#star_<%= rug.id %>').raty({
+      path: '/assets',
+      readOnly: true,
+      score: <%= rug.average_rating %>
+    });
+  </script>
+<% end %>

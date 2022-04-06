@@ -1,18 +1,18 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <span><i class="fa fa-bolt" style="color: #ffb400"></i> Price</span>
-    <span class="pull-right">$<%= @bouncehouse.price %></span>
+    <span class="pull-right">$<%= @rug.price %></span>
   </div>
   <div class="panel-body">
     <div class="container">  
-      <%= form_for([@bouncehouse, @bouncehouse.reservations.new]) do |f| %>
+      <%= form_for([@rug, @rug.reservations.new]) do |f| %>
         <h4 class="message-alert text-center"><span id="message"></span></h4>
         <div id="preview" style="display: none">
           <table class="reservation-table">
             <tbody>
               <tr>
                 <td>Price</td>
-                <td class="text-right">$<%= @bouncehouse.price %></td>
+                <td class="text-right">$<%= @rug.price %></td>
               </tr>
               <tr id="special_details">
                 <td colspan="2">

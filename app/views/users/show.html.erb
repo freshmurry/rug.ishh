@@ -50,10 +50,10 @@
         <!-- YOUR LISTNGS -->
         <% if current_user && current_user.id == 1 %>
           <div class="panel panel-default">
-            <div class="panel-heading">Listings (<%= @bouncehouses.length %>)</div>
+            <div class="panel-heading">Listings (<%= @rugs.length %>)</div>
               <div class="panel-body">
                 <div class="container">
-                  <%= render partial: "bouncehouses/bouncehouses_list", locals: {bouncehouses: @bouncehouses} %>
+                  <%= render partial: "rugs/rugs_list", locals: {rugs: @rugs} %>
                 </div>
               </div>
           </div>

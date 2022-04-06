@@ -4,7 +4,7 @@ class CreateCalendars < ActiveRecord::Migration[5.0]
       t.date :day
       t.integer :price
       t.integer :status
-      t.references :bouncehouse, foreign_key: true
+      t.references :rug, foreign_key: true
 
       t.timestamps
     end

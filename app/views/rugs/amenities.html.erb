@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <%= render 'bouncehouse_menu' %>
+        <%= render 'rug_menu' %>
       </div>
       <div class="col-md-9">
         <div class="panel panel-default">
@@ -11,26 +11,14 @@
             Amenities
           </div>
           
-          <%= form_for @bouncehouse do |f| %>
+          <%= form_for @rug do |f| %>
             <div class="panel-body">
               <div class="container">
         
-                <div class="form-group">
-                  <div class="col-md-4">
-                    <%= f.check_box :is_blower %> Blower
-                  </div>
-                  <div class="col-md-4">
-                    <%= f.check_box :is_repairkit %> Repair Kit
-                  </div>
-                  <div class="col-md-4">
-                    <%= f.check_box :is_transportbag %> Transport Bag
-                  </div>
-                  <div class="col-md-4">
-                    <%= f.check_box :is_instructionalvideo %> Instrctional Video
-                  </div>
                   <div class="col-md-4">
                     <%= f.check_box :is_freeshipping %> Free Shipping
                   </div>
+                  
                 </div>
               </div>
             </div>

@@ -1,4 +1,4 @@
-class Bouncehouse < ApplicationRecord
+class Rug < ApplicationRecord
 
   belongs_to :user, required: false
   has_many :photos
@@ -10,7 +10,7 @@ class Bouncehouse < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
   
-  validates :bouncehouse_type, presence: true
+  validates :rug_type, presence: true
 
   def cover_photo(size)
     if self.photos.length > 0

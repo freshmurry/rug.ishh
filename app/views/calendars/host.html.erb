@@ -1,12 +1,12 @@
 <section class="">
   <div class="container">
-    <% if !@bouncehouses.blank? %>
+    <% if !@rugs.blank? %>
       <div class="row">
         <%= search_form_for @search, class: 'form-group', remote: true, url: host_calendar_path do |f| %>
           <div class="col-md-6 select">
             <div class="form-group">
               <label>Your Listings</label>
-              <%= f.select :bouncehouse_id, options_for_select(@bouncehouses.collect {|u| [u.listing_name, u.id]}, params[:bouncehouse_id]), {}, {
+              <%= f.select :rug_id, options_for_select(@rugs.collect {|u| [u.listing_name, u.id]}, params[:rug_id]), {}, {
                 onchange: "$(this.form).submit()",
                 class: "form-control"
               } %>
@@ -68,7 +68,7 @@
 
       console.log(dayInfo);
 
-      <% if !@bouncehouses.blank? %>
+      <% if !@rugs.blank? %>
         if (dayInfo.length > 0) {
           if (dayInfo[0].status == "Not_Available") {
             cell.addClass('fc-past');
@@ -76,7 +76,7 @@
             cell.append('<span class="day-price">' + '$' + dayInfo[0].price + '</span>')
           }
         } else {
-          cell.append('<span class="day-price">' + '$<%= @bouncehouse.price %>' + '</span>')
+          cell.append('<span class="day-price">' + '$<%= @rug.price %>' + '</span>')
         }
       <% end %>
     },
@@ -86,7 +86,7 @@
       var start_date = moment(start);
       var end_date = moment(end).subtract(1, "days");
 
-      <% if @bouncehouses.blank? %>
+      <% if @rugs.blank? %>
           $('#calendar').fullCalendar('unselect');
       <% end %>
 

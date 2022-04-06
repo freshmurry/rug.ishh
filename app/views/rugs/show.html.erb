@@ -3,7 +3,7 @@
     <!-- Image -->
     <div class="row">
       <div class="col-md-12">
-        <%= image_tag @bouncehouse.cover_photo(nil), width: "100%" %>
+        <%= image_tag @rug.cover_photo(nil), width: "100%" %>
       </div>
     </div>
     <br/>
@@ -16,8 +16,8 @@
         <div class="container">
           <div class="row">
             <div class="col-md-9">
-            <h2><%= @bouncehouse.listing_name %></h2>
-                <%= @bouncehouse.address %>
+            <h2><%= @rug.listing_name %></h2>
+                <%= @rug.address %>
             </div>&nbsp;
     
             <div class="col-md-3 text-center">
@@ -26,7 +26,7 @@
               </div>
               <div class="center">
                 <% if current_user && current_user != @user %>
-                  <%= link_to "Send A Message", conversations_path(sender_id: current_user.id, recipient_id: @bouncehouse.user.id), method: :post, class: "btn btn-default" %>
+                  <%= link_to "Send A Message", conversations_path(sender_id: current_user.id, recipient_id: @rug.user.id), method: :post, class: "btn btn-default" %>
                 <% end %>
               </div>
             </div>
@@ -34,7 +34,7 @@
         </div>  
         <hr/>
           
-        <!-- bouncehouse Info -->
+        <!-- rug Info -->
         <div class="container">
           <div class="row text-center">
             <div class="col-xs-3 col-sm-3 col-md-3">
@@ -52,10 +52,10 @@
           </div>
         
           <div class="row text-center">
-            <div class="col-xs-3 col-sm-3 col-md-3"><%= @bouncehouse.bouncehouse_type %></div>
-            <div class="col-xs-3 col-sm-3 col-md-3"><%= @bouncehouse.size %></div>
-            <div class="col-xs-3 col-sm-3 col-md-3"><%= @bouncehouse.shiptime %></div>
-            <!--<div class="col-xs-3 col-sm-3 col-md-3"><= @bouncehouse. %></div>-->
+            <div class="col-xs-3 col-sm-3 col-md-3"><%= @rug.rug_type %></div>
+            <div class="col-xs-3 col-sm-3 col-md-3"><%= @rug.size %></div>
+            <div class="col-xs-3 col-sm-3 col-md-3"><%= @rug.shiptime %></div>
+            <!--<div class="col-xs-3 col-sm-3 col-md-3"><= @rug. %></div>-->
           </div>
         </div>  
         <hr/>
@@ -67,7 +67,7 @@
               <div class="panel-heading">Description</div>
               <div class="panel-body">
                 <div class="container">
-                  <p><%= @bouncehouse.description %></p>
+                  <p><%= @rug.description %></p>
                 </div>  
               </div>
             </div>
@@ -84,21 +84,21 @@
                 <div class="container">
                   <div class="col-md-12">
                     <div class="row">
+                      <!--<div class="col-xs-3 col-sm-3 col-md-3">-->
+                      <!--  <ul class="amenities">-->
+                      <!--    <li class="<= 'text-line-through' if !@rug.is_blower %>">Blower</li>-->
+                      <!--    <li class="<= 'text-line-through' if !@rug.is_repairkit %>">Repair Kit</li>-->
+                      <!--  </ul>-->
+                      <!--</div>-->
+                      <!--<div class="col-xs-3 col-sm-3 col-md-3">-->
+                      <!--  <ul class="amenities">-->
+                      <!--    <li class="<= 'text-line-through' if !@rug.is_transportbag %>">Transport Bag</li>-->
+                      <!--    <li class="<= 'text-line-through' if !@rug.is_instructionalvideo %>">Instrctional Video</li>-->
+                      <!--  </ul>-->
+                      <!--</div>-->
                       <div class="col-xs-3 col-sm-3 col-md-3">
                         <ul class="amenities">
-                          <li class="<%= 'text-line-through' if !@bouncehouse.is_blower %>">Blower</li>
-                          <li class="<%= 'text-line-through' if !@bouncehouse.is_repairkit %>">Repair Kit</li>
-                        </ul>
-                      </div>
-                      <div class="col-xs-3 col-sm-3 col-md-3">
-                        <ul class="amenities">
-                          <li class="<%= 'text-line-through' if !@bouncehouse.is_transportbag %>">Transport Bag</li>
-                          <li class="<%= 'text-line-through' if !@bouncehouse.is_instructionalvideo %>">Instrctional Video</li>
-                        </ul>
-                      </div>
-                      <div class="col-xs-3 col-sm-3 col-md-3">
-                        <ul class="amenities">
-                          <li class="<%= 'text-line-through' if !@bouncehouse.is_freeshipping %>">Free Shipping</li>
+                          <li class="<%= 'text-line-through' if !@rug.is_freeshipping %>">Free Shipping</li>
                         </ul>
                       </div>
                     </div>
@@ -165,17 +165,17 @@
           <div class="row">
             <div class="panel panel-default">
               <div class="panel-heading">What Other Customers Purchased</div>
-                <% for bouncehouse in @bouncehouse.nearbys(10) %>
+                <% for rug in @rug.nearbys(10) %>
               <div class="col-md-4">
                 <div class="panel panel-default">
                   <div class="panel-heading preview">
-                    <%= image_tag bouncehouse.cover_photo(:medium) %>
-                    <div class="price-box-wrapper pull-right">$<%= bouncehouse.price %></div>
+                    <%= image_tag rug.cover_photo(:medium) %>
+                    <div class="price-box-wrapper pull-right">$<%= rug.price %></div>
                   </div>
                       
                   <div class="panel-body">
                     <div class="container">
-                      <%= link_to bouncehouse.listing_name, bouncehouse %><br/>
+                      <%= link_to rug.listing_name, rug %><br/>
                     </div>
                   </div>
                 </div>  
@@ -199,6 +199,6 @@
   $('#average_rating').raty({
     path: '/assets',
     readOnly: true,
-    score: <%= @bouncehouse.average_rating %>
+    score: <%= @rug.average_rating %>
   });
 </script>

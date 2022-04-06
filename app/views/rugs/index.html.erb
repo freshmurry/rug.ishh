@@ -4,7 +4,7 @@
       <div class="col-md-3">
         <ul class="sidebar-list">
           <% if current_user && current_user.id == 1 %>
-          <li class="sidebar-item"><%= link_to "Current Listings", bouncehouses_path, class: "sidebar-link active" %></li>
+          <li class="sidebar-item"><%= link_to "Current Listings", rugs_path, class: "sidebar-link active" %></li>
           <% else %>
           <li class="sidebar-item"><%= link_to "Purchase History", previous_reservations_path, class: "sidebar-link" %></li>
           <% end %>
@@ -18,18 +18,18 @@
           
           <div class="panel-body">
             <div class="container">
-              <% @bouncehouses.each do |bouncehouse| %>
+              <% @rugs.each do |rug| %>
                 <div class="container-fluid">
                   <div class="row">
                     <div class="container-fluid">
                       <div class="col-md-2">
-                        <%= image_tag bouncehouse.cover_photo(:thumb) %>
+                        <%= image_tag rug.cover_photo(:thumb) %>
                       </div>
                       <div class="col-md-7">
-                        <h5><%= bouncehouse.listing_name %></h5>
+                        <h5><%= rug.listing_name %></h5>
                       </div>
                       <div class="col-md-2">
-                        <%= link_to "Update", listing_bouncehouse_path(bouncehouse), class: "btn btn-form" %>
+                        <%= link_to "Update", listing_rug_path(rug), class: "btn btn-form" %>
                       </div>
                     </div>  
                   </div>  

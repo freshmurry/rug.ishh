@@ -30,8 +30,8 @@
           <div class="row">
               <div class="col-md-4">
                 <div class="form-group select">
-                  <label>Bounce House Type</label>
-                  <%= f.select :bouncehouse_type_gteq, [["Regluar", "Regular"], ["Castle", "Castle"], ["Weeding","Wedding"], ["Waterslide","Waterslide"]], id: "bouncehouse_type", prompt: "Select...", class: "form-control" %>
+                  <label>Rug Type</label>
+                  <%= f.select :rug_type_gteq, [["Small", "Small"], ["Medium", "Medium"], ["Large","Large"], ["Extra Large","Extra Large"]], id: "rug_type", prompt: "Select...", class: "form-control" %>
                 </div>
               </div>
             </div>
@@ -45,8 +45,8 @@
         
         <br/>
   
-        <div class="row" id="bouncehouse_listing">
-          <%= render partial: "bouncehouses/bouncehouses_list", locals: {bouncehouses: @arrBouncehouses} %>
+        <div class="row" id="rug_listing">
+          <%= render partial: "rugs/rugs_list", locals: {rugs: @arrRugs} %>
         </div>
       </div>
     </div>

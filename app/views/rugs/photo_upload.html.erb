@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <%= render 'bouncehouse_menu' %>
+        <%= render 'rug_menu' %>
       </div>
       <div class="col-md-9">
         <div class="panel panel-default">
@@ -17,7 +17,7 @@
                 <div class="col-md-offset-3 col-md-6">
                   <!-- PHOTOS UPLOAD GOES HERE -->
     
-                  <%= form_for @bouncehouse, url: bouncehouse_photos_path(@bouncehouse), method: 'post', html: {multipart: true} do |f| %>
+                  <%= form_for @rug, url: rug_photos_path(@rug), method: 'post', html: {multipart: true} do |f| %>
                     <div class="">
                       <div class="form-group">
                         <span class="btn btn-default btn-file text-babu">

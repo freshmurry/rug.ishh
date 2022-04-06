@@ -8,4 +8,4 @@ production:
   adapter: async
   # adapter: redis
   # url: redis://localhost:6379/1
-  channel_prefix: BerwynBounceHouse_production
+  channel_prefix: Rugishh_production
