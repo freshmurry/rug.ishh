@@ -277,7 +277,7 @@ Devise.setup do |config|
 
   # config.omniauth :facebook, '', '', scope: 'email', info_fields: 'email, name'
   config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET'], scope: 'email', info_fields: 'email, name'
-  # config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET'], callback_url: 'https://www.rugishh.com/auth/facebook/callback'
+  # config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET'], callback_url: 'https://rugishh.herokuapp.com/auth/facebook/callback'
                 # client_options: {
                 #     site: 'https://graph.facebook.com/v2.11',
                 #     authorize_url: "https://www.facebook.com/v2.11/dialog/oauth"
