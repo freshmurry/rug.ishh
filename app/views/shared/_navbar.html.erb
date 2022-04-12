@@ -20,28 +20,10 @@
         <li><%= link_to "Support", support_path, style: "text-decoration: none;" %></li>
         <li><%= link_to "Blog", blog_path, style: "text-decoration: none;" %></li>
         <% if (!user_signed_in?) %>
-          <li>
-            <% if current_user && current_user.id == 1 %>
-              <button class="btn btn-form btn-small">
-                <%= link_to "Create New Product", new_user_registration_path, style: "color: white; text-decoration: none;" %>
-              </button>
-            <% else %>
-            
-            <% end %>
-          </li>
           <!--<li><= link_to "773-727-5654", style: "text-decoration: none;" %></li>-->
           <li><%= link_to "Login", new_user_session_path %></li>
           <li><%= link_to "Sign Up", new_user_registration_path %></li>
         <% else %>
-          <li>
-            <% if current_user && current_user.id == 1 %>
-              <button class="btn btn-form btn-small">
-                <%= link_to "Create New Product", new_rug_path, style: "color: white; text-decoration: none;" %>
-              </button>
-            <% else %>  
-              
-            <% end %>
-          </li>
           <li>
             <%= link_to notifications_path do %>
             <i class="fa fa-bell fa-2x icon-babu"></i>
@@ -68,7 +50,7 @@
               
               <% end %>
               <% if current_user && current_user.id == 1 %>
-              <li><%= link_to "Create Listing", new_rug_path %></li>
+              <!--<li><= link_to "Create Listing", new_rug_path %></li>-->
               <% else %>
               
               <% end %>

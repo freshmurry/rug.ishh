@@ -25,8 +25,8 @@
                 <span id="average_rating"></span>
               </div>
               <div class="center">
-                <% if current_user && current_user != @user %>
-                  <%= link_to "Send A Message", conversations_path(sender_id: current_user.id, recipient_id: @rug.user.id), method: :post, class: "btn btn-default" %>
+                <% if current_user && current_user.id !=1 %>
+                  <%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn btn-default" %>
                 <% end %>
               </div>
             </div>

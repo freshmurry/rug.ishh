@@ -64,7 +64,7 @@
         <!-- YOUR REVIEWS -->
         <% if current_user && current_user.id == 1 %>
         <div class="panel panel-default">
-          <div class="panel-heading">Reviews from Guest (<%= @guest_reviews.count %>)</div>
+          <div class="panel-heading">Reviews from Customers (<%= @guest_reviews.count %>)</div>
             <div class="container">
               <div class="panel-body">
                 <%= render "reviews/guest_list" %>
